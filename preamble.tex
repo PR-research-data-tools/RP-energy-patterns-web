@@ -1,0 +1,377 @@
+%\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+% \usepackage{cite}
+ \usepackage{amsmath,amsfonts}
+% \usepackage{algorithmic}
+% \usepackage{graphicx}
+ \usepackage{textcomp}
+% \usepackage{xcolor}
+\usepackage{xspace}
+%\usepackage{float}
+%\usepackage{balance}
+%\usepackage{rotating}
+%\usepackage{multirow}
+%\usepackage{needspace}
+%\usepackage{microtype}
+%\usepackage{bold-extra}
+%\usepackage{geometry}
+%\usepackage{varioref}
+%\usepackage{listings}
+\usepackage[normalem]{ulem} %emphasize still italic
+%\usepackage{ucs}
+%\usepackage{times}
+\usepackage{url} %to allow line breaks in footnote url
+\def\UrlBreaks{\do\/\do-}
+%\usepackage{alltt}
+%\usepackage{xfrac}
+%\usepackage{subfigure}
+%\usepackage{stmaryrd}   % for the \shortuparrow
+%\usepackage{setspace}
+%\usepackage[numbers, sort&compress]{natbib}
+%\usepackage{mdwlist}        % support for better spaced lists
+%\usepackage{chngpage} % allows for temporary adjustment of side margins
+%\usepackage[normalem]{ulem}
+\usepackage{subcaption}
+\usepackage{tablefootnote}
+\usepackage{array, booktabs}
+\usepackage{blindtext}
+%\PassOptionsToPackage{hyphens}{url}
+%\usepackage[pdftex,colorlinks=true,pdfstartview=FitV,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+%\usepackage{hyperref}
+\usepackage{ifthen}
+%\usepackage[normalem]{ulem} % for \sout
+%\usepackage{todonotes}
+\usepackage[shortlabels]{enumitem}
+%\usepackage{enumerate}
+
+\usepackage{csvsimple}
+\usepackage{supertabular} % for creating tables that can break across multiple pages. It works similarly to the longtable package but is designed to work well in multicolumn environments.
+%\usepackage{multicol} %allow the table to break over columns
+\usepackage[most]{tcolorbox}
+%\usepackage[multiple]{footmisc}
+%\usepackage[caption=false]{subfig}
+%\usepackage{subfloat}
+
+%\usepackage{arydshln} % for cdashline
+%\usepackage{paralist} %to list extends of previous work
+%deactivate indentation on new paragraphs
+%\usepackage{parskip}
+% for wrapping text in table cells
+\usepackage{tabularx}
+%\usepackage{longtable} %for longtables however it cause problems with two column mode
+%--- for dividing references into sections
+%\usepackage[
+%natbib=true,
+%]{biblatex}
+%\addbibresource{scg.bib}
+
+\usepackage{fontawesome}      % for icon next to scg URL next to author list on title page
+\usepackage{adjustbox} 		% for vertical text in tables
+\usepackage{pifont} 		% for crosses and ticks in tables
+
+
+\newcolumntype{R}[2]{
+    >{\adjustbox{angle=#1,lap=\width-(#2),margin*=0.4em 0em 0em 0em}\bgroup}
+    l
+    <{\egroup}
+}
+\newcommand*\rot{\multicolumn{1}{R{90}{1em}}} % no optional argument here, please!
+
+% for footnotes 1,2,3..... style
+% (traditional approach with \usepackage[multiple]{footmisc} breaks clickable links, overrides behavior)
+\let\oldFootnote\footnote
+\newcommand\nextToken\relax
+\renewcommand\footnote[1]{%
+    \oldFootnote{#1}\futurelet\nextToken\isFootnote}
+\newcommand\isFootnote{%
+    \ifx\footnote\nextToken\textsuperscript{,}\fi}
+
+\renewcommand{\arraystretch}{1.2}
+
+%-------------- background boxes for RQs-------------
+\definecolor{gray50}{gray}{.5}
+\definecolor{gray40}{gray}{.6}
+\definecolor{gray30}{gray}{.7}
+\definecolor{gray20}{gray}{.8}
+\definecolor{gray10}{gray}{.9}
+\definecolor{gray05}{gray}{.95}
+
+\newlength\Linewidth
+\def\findlength{\setlength\Linewidth\linewidth
+	\addtolength\Linewidth{-4\fboxrule}
+	\addtolength\Linewidth{-3\fboxsep}
+}
+\newenvironment{rqbox}{\par\begingroup
+	\setlength{\fboxsep}{5pt}\findlength
+	\setbox0=\vbox\bgroup\noindent
+	\hsize=0.95\linewidth
+	\begin{minipage}{0.95\linewidth}\normalsize}
+	{\end{minipage}\egroup
+	\textcolor{gray20}{\fboxsep1.5pt\fbox
+		{\fboxsep5pt\colorbox{gray05}{\normalcolor\box0}}}
+	\endgroup\par\noindent
+	\normalcolor\ignorespacesafterend}
+\let\Rqbox\rqbox
+\let\endRqbox\endrqbox
+
+
+
+\newcommand{\rb}[1]{
+	
+	%\vspace{0.3cm}
+	\begin{tcolorbox}[colback=gray!05,%gray background
+		colframe=black,% black frame colour
+		width=\columnwidth,% Use 5cm total width,
+		arc=3mm, auto outer arc,
+		boxrule=0.5pt,
+		]
+		#1
+	\end{tcolorbox}
+}
+
+\newcounter{Finding}
+\stepcounter{Finding}
+
+\newcommand{\roundedbox}[1]{
+	\rb{
+		\noindent
+		\textit{\textbf{Finding \theFinding}. #1}
+	}
+	\stepcounter{Finding}
+}
+
+\newcommand{\needlines}[1]{\Needspace{#1\baselineskip}}
+\newcommand{\ra}{$\rightarrow$}
+\newcommand{\yellowbox}[1]{\fcolorbox{gray}{yellow}{\bfseries\sffamily\scriptsize#1}}
+\newcommand{\triangles}[1]{{\sf\small$\blacktriangleright$\textit{#1}$\blacktriangleleft$}}
+\newcommand{\nb}[2]{\nbc{#1}{#2}{orange}}
+\newcommand{\here}{\yellowbox{$\Rightarrow$ CONTINUE HERE $\Leftarrow$}}
+\newcommand\fix[1]{\nb{FIX}{#1}}
+
+% add more author macros here
+\newcommand\tk[1]{\nbc{TK}{#1}{olive}} 
+\newcommand\ab[1]{\nbc{AB}{#1}{purple}}
+\newcommand\pr[1]{\nbc{PR}{#1}{violet}}
+\newcommand\jz[1]{\nbc{JZ}{#1}{brown}}
+\newcommand\vk[1]{\nbe{VK}{#1}{red}}
+\newcommand\rB[1]{\nbe{Reviewer 2}{#1}{blue}}
+\newcommand\rC[1]{\nbe{Reviewer 3}{#1}{magenta}}
+\newcommand\ANS[1]{\nbe{Response}{#1}{teal}}
+\newcommand\todo[1]{\nb{TO DO}{#1}}
+
+
+\newcommand\remind[1]{\nbc{REMINDER}{#1}{gray}}
+\newcommand\review[1]{\nbc{TO REVIEW}{#1}{orange}}
+\newcommand{\ie}{\emph{i.e.},\xspace}
+\newcommand{\eg}{\emph{e.g.},\xspace}
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\etc}{\emph{etc.}\xspace}
+\newcommand{\github}{{GitHub}\xspace}
+
+\newcommand{\secheaderfield}[1]{\textbf{\code{#1}}}
+%\newcommand{\SO}{{Stack Overflow}\xspace}
+
+\newcommand{\darkui}{Dark UI Colors\xspace}
+\newcommand{\dynretdel}{Dynamic Retry Delay\xspace}
+\newcommand{\avoidextrawork}{Avoid Extraneous Work\xspace}
+\newcommand{\raceidle}{Race-to-idle\xspace}
+\newcommand{\openwneccesary}{Open Only When Necessary\xspace}
+\newcommand{\pushpoll}{Push over Poll\xspace}
+\newcommand{\powersave}{Power Save Mode\xspace}
+\newcommand{\poweraware}{Power Awareness\xspace}
+\newcommand{\reducesize}{Reduce Size\xspace}
+\newcommand{\wificell}{WiFi over Cellular\xspace}
+\newcommand{\suplog}{Suppress Logs\xspace}
+\newcommand{\batchoper}{Batch Operations\xspace}
+\newcommand{\cache}{Cache\xspace}
+\newcommand{\decreaserate}{Decrease Rate\xspace}
+\newcommand{\usrknowbest}{User Knows Best\xspace}
+\newcommand{\informusr}{Inform Users\xspace}
+\newcommand{\enoresolution}{Enough Resolution\xspace}
+\newcommand{\sensorfusion}{Sensor Fusion\xspace}
+\newcommand{\killtask}{Kill Abnormal Tasks\xspace}
+\newcommand{\noscrinteraction}{No Screen Interaction\xspace}
+\newcommand{\avoidgraphic}{Avoid Extraneous Graphics and Animations\xspace}
+\newcommand{\mansyncod}{Manual Sync – On Demand\xspace}
+
+\newcommand{\eps}{energy patterns\xspace}
+\newcommand{\eaps}{energy antipatterns\xspace}
+\newcommand{\EPS}{Energy Patterns\xspace}
+\newcommand{\EAPS}{Energy Antipatterns\xspace}
+\newcommand{\antipattern}{antipattern\xspace}
+\newcommand{\antipatterns}{antipatterns\xspace}
+\newcommand{\numberofpattensincode}{15\xspace}
+
+\newcommand{\powergadget}{Intel Power Gadget\xspace}
+\newcommand{\rapl}{Running Average Power Limit\xspace}
+\newcommand{\drr}{DRD\xspace}
+\newcommand{\oown}{OOWN\xspace}
+
+\newcommand{\yes}{\ding{52}}
+\newcommand{\no}{\ding{54}}
+
+\newcommand{\smallfootnote}[1]{\footnote{\fontsize{6}{6}\selectfont #1}}
+\newcommand{\n}{$\cdot$}
+\newcommand{\y}{\checkmark}
+\newcommand{\subscript}[1]{$_{\textrm{\footnotesize{#1}}}$}
+\newcommand{\superscript}[1]{$^{\textrm{\footnotesize{#1}}}$}
+\newcommand{\vertical}[1]{\raisebox{-4em}{\begin{sideways}{#1}\end{sideways}}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\paratitle}[1]{\emph{#1. }}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}} % left aligned column
+
+% given by IEEE template 
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+% ============================================================
+% Markup macros for proof-reading
+\newboolean{showedits}
+\setboolean{showedits}{true} % toggle to show or hide edits
+\ifthenelse{\boolean{showedits}}
+{
+	\newcommand{\meh}[1]{\textcolor{red}{\uwave{#1}}} % please rephrase
+	\newcommand{\ins}[1]{\textcolor{blue}{\uline{#1}}} % please insert
+	\newcommand{\del}[1]{\textcolor{red}{\sout{#1}}} % please delete
+%	\newcommand{\chg}[2]{\textcolor{red}{\sout{#1}}{\ra}\textcolor{blue}{\uline{#2}}} % please change
+	\newcommand{\chg}[2]{\textcolor{orange}{\uline{#2}}} % please change
+	\newcommand{\nbe}[3]{
+		{\colorbox{#3}{\bfseries\sffamily\scriptsize\textcolor{white}{#1}}}
+		{\textcolor{#3}{\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}}}
+}{
+	\newcommand{\meh}[1]{#1} % please rephrase
+	\newcommand{\ins}[1]{#1} % please insert
+	\newcommand{\del}[1]{} % please delete
+	\newcommand{\chg}[2]{#2}
+	\newcommand{\nbe}[3]{}
+}
+
+% ============================================================
+% Box comments/edits
+\ifthenelse{\boolean{showedits}}
+{
+	\newtcolorbox{inserted}{
+		title=Inserted text:,
+		colframe=blue,colback=blue!5!white,
+		breakable,
+		leftrule=0mm, 
+		bottomrule=0mm,
+		rightrule=0mm,
+		toprule=0mm,
+		arc=0mm, outer arc=0mm,
+		oversize
+	}
+	\newtcolorbox{deleted}{
+		title=Deleted text:,
+		colframe=red,colback=red!5!white,
+		breakable,
+		leftrule=0mm, 
+		bottomrule=0mm,
+		rightrule=0mm,
+		toprule=0mm,
+		arc=0mm, outer arc=0mm,
+		oversize
+	}
+	\newtcolorbox{refactored}{
+		title=Rewritten text:,
+		colframe=blue,colback=red!5!white,
+		breakable,
+		leftrule=0mm, 
+		bottomrule=0mm,
+		rightrule=0mm,
+		toprule=0mm,
+		arc=0mm, outer arc=0mm,
+		oversize
+	}
+}{
+	\newenvironment{inserted}{}{}
+	\let\deleted\comment
+	\newenvironment{refactored}{}{} 
+}
+
+% ============================================================
+% Put edit comments in a really ugly standout display
+\newboolean{showcomments}
+\setboolean{showcomments}{true}
+%\setboolean{showcomments}{false}
+\ifthenelse{\boolean{showcomments}}
+{\newcommand{\nbc}[3]{
+		{\colorbox{#3}{\bfseries\sffamily\scriptsize\textcolor{white}{#1}}}
+		{\textcolor{#3}{\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}}}
+	\newcommand{\version}{\emph{\scriptsize\id}}}
+{\newcommand{\nbc}[3]{}
+	\newcommand{\version}{}}
+
+% ============================================================
+% Constants
+\newcounter{qcounter}
+
+% ============================================================================
+% Make quotes be italic
+\renewenvironment{quote}
+{\list{}{\rightmargin\leftmargin}
+	\item\relax\begin{it}}
+	{\end{it}\endlist}
+\newcommand{\ttimes}{\ensuremath{\times}}
+
+% =============================================================================
+% Source Code
+\definecolor{source}{gray}{0.9}
+\lstset{
+	language={},
+	% characters
+	tabsize=3,
+	upquote=true,
+	escapechar={^},
+	keepspaces=true,
+	breaklines=true,
+	alsoletter={},
+	breakautoindent=true,
+	columns=fullflexible,
+	showstringspaces=false,
+	basicstyle=\footnotesize\ttfamily,
+	% background
+	frame=single,
+	framerule=0pt,
+	backgroundcolor=\color{source},
+	% numbering
+	%numbers=left,
+	%numbersep=5pt,
+	%numberstyle=\tiny,
+	%numberfirstline=true,
+	% captioning
+	captionpos=b,
+	numberbychapter=false,
+	% formatting (html)
+	moredelim=[is][\textbf]{<b>}{</b>},
+	moredelim=[is][\textit]{<i>}{</i>},
+	moredelim=[is][\uline]{<u>}{</u>}}
+\newcommand{\ct}{\lstinline[backgroundcolor=\color{white},basicstyle=\footnotesize\ttfamily]}
+\newcommand{\lct}[1]{{\small\tt #1}}
+
+%----------------------------------------------------------------------------
+% Custom macros
+\newcommand\keyword[1]{[#1]}
+% ============================================================
+\newboolean{isblinded}
+\setboolean{isblinded}{true}
+%\setboolean{isblinded}{false}
+\ifthenelse{\boolean{isblinded}}
+{\newcommand\blind[1]{BLINDED\xspace}}
+{\newcommand\blind[1]{#1\xspace}}
+
+
+%\usepackage[pdftex,colorlinks=true,pdfstartview=FitV,linkcolor=black,citecolor=black,urlcolor=black,bookmarks=false]{hyperref}
+
+%----------------------------------------------------------------------------
+%Paper specific
+\newcommand{\rqI}{To what extent can we adapt the energy patterns for mobile applications to web applications?}
+\newcommand{\rqII}{What are the concerns and challenges of industry developers for energy patterns?}
+\newcommand{\rqIII}{How does an energy pattern impact energy consumption?}
+
+\newcommand{\repFolder}[1]{Folder ``\href{}{RP/#1}'' in the Replication package}
+\newcommand{\repFile}[1]{File ``\href{}{RP/#1}'' in the Replication package}
+%----------------------------------------------------------------------------
+
+

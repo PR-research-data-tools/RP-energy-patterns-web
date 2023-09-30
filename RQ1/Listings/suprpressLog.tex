@@ -1,0 +1,14 @@
+\begin{minipage}
+    \begin{lstlisting}[caption={Console log of an interaction with a web application on log level warning. Other logging levels include warnings, errors, and critical system failures.}, label={suppresslogscode}]
+# loglevel = warning
+
+backend  | 2023-07-19 13:48:56,133 model_factory Response to request with pk 1234-5678-abcd 
+    has content type text/javascript but was unable to parse it
+
+backend  | 2023-07-19 13:49:02,343 model_factory Response to request with pk abcd-1234-5678 
+    has content type text/javascript but was unable to parse it
+
+backend  | 2023-07-19 13:49:12,876 model_factory Response to request with pk 1234-abcd-5678 
+    has content type text/javascript but was unable to parse it
+    \end{lstlisting}
+\end{minipage}

@@ -1,0 +1,11 @@
+\begin{minipage}
+    \begin{lstlisting}[caption={Code snippet of a push notification implementation.},
+    %\footnote{\url{https://github.com/tpeczek/Demo.AspNetCore.PushNotifications/blob/main/Demo.AspNetCore.PushNotifications.Services.PushService/PushServicePushNotificationService.cs} last accessed March 23}
+    label={cachecode}]
+let data = localStorage.getItem('data')
+axios.get('/data').then((response) => {
+  data = response.data.data
+  localStorage.setItem('data', response.data.data)
+})}
+\end{lstlisting}
+\end{minipage}

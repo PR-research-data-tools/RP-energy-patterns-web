@@ -1,0 +1,32 @@
+\begin{minipage}
+    \begin{lstlisting}[caption={Accessing the camera only when actually capturing the image - not earlier 
+    %\footnote{\url{https://github.com/jbull328/vue-cam-demo/blob/master/src/components/CameraDisplay.vue} last accessed February 23}
+    }, label={OpenOnlyWhenNecessaryCode}]
+<template>
+    ...
+    <div  class="camera-icon" @click="captureImage">
+        <i class="big camera icon" ></i>
+        <p>Take Picture</p>
+    </div>
+    ...
+</template>
+
+<script>
+    ...
+    methods: {
+        captureImage() {
+            const mediaStreamTrack = this.mediaStream.getVideoTracks()[0]
+            const imageCapture = new window.ImageCapture(mediaStreamTrack)
+            let reader = new FileReader();
+            return imageCapture.takePhoto().then(blob => {
+                reader.readAsDataURL(blob)
+                reader.onload = () => {
+                    this.imageData.image = reader.result;
+                }
+            })  
+        }
+    }
+    ...
+    <\script>
+    \end{lstlisting}
+\end{minipage}

@@ -1,0 +1,17 @@
+\begin{minipage}
+    \begin{lstlisting}[caption={Code snippet of a push notification implementation.}, label={pushoverpollcode}]
+public async Task SendNotificationAsync(PushSubscription subscription, 
+    PushMessage message, CancellationToken cancellationToken)
+{
+    try
+    {
+        await _pushClient.RequestPushMessageDeliveryAsync(subscription, message, 
+        cancellationToken);
+    }
+    catch (Exception ex)
+    {
+        await HandlePushMessageDeliveryExceptionAsync(ex, subscription);
+    }
+}
+    \end{lstlisting}
+\end{minipage}

@@ -1,0 +1,6 @@
+\begin{minipage}
+    \begin{lstlisting}[caption={Example of a timeout.},label={killabnormaltaskscode}]
+    some_job = django_rq.enqueue(_setup, jobs, 
+            job_timeout=7200, result_ttl=1800)
+    \end{lstlisting}
+\end{minipage}
