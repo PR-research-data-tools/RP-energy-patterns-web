@@ -1,4 +1,5 @@
-\section{$RQ_1$: Adaptation of \EPS} 
+% !TEX root = main.tex
+\section{\texorpdfstring{$RQ_1$}: Adaptation of \EPS} 
 %\input{Listings/avoidExtraWork}
 
 %\input{Listings/batchoperations}
@@ -10,16 +11,398 @@
 %\input{Listings/pushOverPoll}
 %\input{Listings/killAbnormalTask}
 
-\section{$RQ_2$: Industry Insights on \EPS} 
+For each pattern, we provide the original definition given by Cruz \etal, the adapted context for web applications, a solution, and an example \cite{cruz2019catalog}. The discussion part of each section can provide comparisons between mobile and web applications, examples, and research from other domains for that pattern. If the pattern only applies to a certain extent or in certain situations, the discussion aims to present the reasons and explanations.
+
+% --------------------------------------------------------------------
+\subsection{Dark UI Colors}\label{sec:patterns-DarkUIColors}
+\textbf{Original:} {``}Provide a dark UI color theme to save battery on devices with AMOLED screens~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Dark mode can be applied to anything with a GUI (graphical user interface - also sometimes referred to only as UI user interface). Since websites provide interactive GUIs, dark background colors can be applied to web UIs.
+
+\textbf{Solution:} Provide a UI with dark background colors.
+
+\textbf{Example:} There already exist websites that provide dark UI colors like wand.ai (see Figure \ref{fig:wandb}).
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{RQ1/Img/wandbAI.png}
+    \caption{Screenshot of a website with dark UI colors \cite{website-wandb}.}
+    \label{fig:wandb}
+\end{figure}
 
 
-\section{$RQ_3$: Impact of \EPS} 
+\textbf{Discussion:} In mobile devices, the display alongside the GSM module are the two components with the highest power consumption ~\cite{Carroll2010}. Providing a dark UI color theme on devices with OLED (Organic Light Emitting Diodes) screens has been shown to reduce the display's power consumption up to 83\%, which can translate into a 69\% total phone power reduction~\cite{Dash2021}. This indicates that switching from light to dark mode saves a significant amount of battery.
+
+The percentage of global web traffic recorded on mobile phones has increased drastically over the past decade. In February 2023, 60.67\% of all web traffic came through mobile phones \cite{statista-website-traffic-from-mobile-devices}. Therefore, we expect similar benefits to battery life when accessing a web page with dark UI colors from a smartphone. To our knowledge, no research exists on energy consumption reduction of dark UI colors in non-battery-powered devices. We assume that depending on the monitor type used to display the web pages - namely, the newly emerging OLED monitors - there will be a reduction of energy consumption. Generally, we see dark UI colors catching on in web applications with motivations not only restricted to reducing power consumption: they range from adjusting brightness to current lighting conditions and improved display readability in dark environments~\cite{Mantiuk2009}~\cite{Rempel2012}, to having beneficial impact on users with reduced vision in certain circumstances~\cite{Bangor1999} and of course reduce power consumption on battery-powered devices~\cite{Dong2009}. Given this pattern's various benefits, it would be interesting to survey users to gather other possible benefits.
+
+% --------------------------------------------------------------------
+\subsection{Dynamic Retry Delay}\label{sec:patterns-DynamicRetryDelay}
+\textbf{Original:} ``Whenever an attempt to access a resource fails, increase the time interval before retrying to access the same resource~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} The concept of managing retries to access a previously failed resource is a common topic across all computer science domains, including web applications. For instance, in client-server-based applications, the front and backend communication frequently happens through APIs. Specifically, the frontend sends a request to the backend, and based on the availability of the resource, the backend replies to the request.
+
+\textbf{Solution:} Use a heuristic (\eg linear or exponential increase) to manage the retry interval after each failed attempt to connect.
+
+\textbf{Example:} Consider a web application that displays a news feed. The frontend relies on the backend to provide updates. In case the frontend can not reach the backend, it can either continuously send requests to the backend or can increase the time between attempts using some sort of heuristic (\eg linear or exponential growth).  Listing \ref{dynamicretrydelaycode} shows an implementation utilizing the Fibonacci series to delay the retry attempts.
+
+\input{RQ1/Listings/dynamicRetyrDelay.tex}
+
+\textbf{Discussion:} Research concerning the impact of energy consumption in connection with (re-)accessing resources is being conducted in different subdomains of computer science already. For example, in Wireless Sensor Networks (WSN), energy consumption is one of the main design constraints alongside scalability, delay, traffic adaptation, throughput, and overheads. Therefore, an efficient Medium Access Control (MAC) protocol is required~\cite{Kaur2016}. Cho \etal proposed a back-off algorithm for MAC protocols in WSN that uses a dynamic contention period based on the remaining energy (\ie battery level) of each sensor node~\cite{Cho2006}. They showed that this algorithm saves more power and prolongs the lifetime of sensor nodes compared to conventional back-off algorithms. We assume that using this and similar back-off algorithms would also decrease power consumption in other contexts, not only in wireless sensor networks.
+
+A direct consequence of re-accessing a resource is that the end user experiences a delay while interacting with the application. Whenever a user experiences a delay in communication over a network, we speak of latency. Network latency can be described as the time it takes for a data package to travel from one point in the network to another.  There exists no agreement on what a good latency is. For example, an acceptable latency in gaming is around 40 - 60 milliseconds or less \cite{gaming-latency},
+ while web domains accept values below 150 milliseconds for loading websites \cite{website-latency}
+and below 100 milliseconds
+when streaming videos or video conferencing \cite{latency-video}. This implies that as developers, we must be aware of the web application's purpose and aim for the maximum latency. While measuring the energy impact, we need to consider the sources, the domain, and the medium through which the internet is accessed as the latency is significantly lower when using an Ethernet connection compared to Wi-Fi \cite{ethernet-vs-wifi}. 
+
+% --------------------------------------------------------------------
+\subsection{Avoid Extraneous Work}\label{sec:patterns-AvoidExtraneousWork}
+\textbf{Original:} ``Avoid performing tasks that are either not visible, do not have a direct impact on the user experience or quickly become obsolete~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Web applications can perform a number of tasks simultaneously. There are cases in which the result of those tasks is either not visible (\eg the UI is presenting other pieces of information), or the result is not necessarily relevant to the user. This is particularly critical when the website goes to the background (\eg the user changes to another tab in the browser).
+
+\textbf{Solution:} Investigate the relevant set of data to be presented to the user in each use case. Enable/disable updates and processing tasks depending on their effect on the visible or valuable data to the user.
+
+\textbf{Example:} Consider the code snippet in \autoref{AvoidExtraneousWorkCode}. It shows an example where a website pauses audio when the user switches to a different tab and plays when they switch back. In this case, no unnecessary energy consumption will occur when the user is not interacting with the page.
+
+\textbf{Discussion:} For web applications, for example, there exists the Page Visibility API \cite{dev-mozilla-page-visibility-api}. When the user switches to another tab or minimizes the window, this API sends an event to let listeners know that the state of the page has changed. This is especially useful for improving performance and also saving resources by not letting a page perform unnecessary tasks when the document isn't visible. See also the discussions in \ref{sec:patterns-OpenOnlyWhenNecessary} Open Only When Necessary and in \ref{sec:patterns-RaceToIdle} Race-to-idle.
+
+In the context of web applications, its data, in the form of content, does not necessarily become as 'quickly obsolete' as in mobile applications. For example, recommendations based on location \eg for restaurants or for ATMs, will change if the user is on the move. Therefore, the location data from a couple of minutes ago can become obsolete. If we implement a mobile application, we expect the user to be on the move frequently. But if we implement a web application, we can not generally expect this behavior. Therefore, we recommend setting the focus of this pattern in web applications on tasks that are either not visible or do not directly impact the user experience.
+
+\input{RQ1/Listings/avoidExtraWork.tex}
+
+% --------------------------------------------------------------------
+\subsection{Race-to-idle}\label{sec:patterns-RaceToIdle}
+\textbf{Original:} ``Release resources or services as soon as possible (such as wake locks, screen)~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Releasing resources and services that are no longer needed is a very sensible coding practice that can be applied anywhere in computer science, including in web applications. The resources in the context of web applications refer to the backend, external servers, databases, and device hardware (\eg camera, microphone, and speaker).
+
+\textbf{Solution:} Release unnecessary resources and services. This includes releasing the hardware resources that are no longer used (\eg camera after a video call) and applying resource management patterns (\eg garbage collection) during software development.
+
+\textbf{Example:} Soundcloud uses React Redux in their techstack, which includes the functionality of garbage collection \cite{redux-garbage-collection}.
+
+\textbf{Discussion:} There exist a number of resource management patterns in software development. For instance, Resource manager patterns \cite{design-pattern-resource-manager} for embedded and real-time systems utilize lists to keep track of free and busy resources to figure out how to allocate and free up resources in the system. Another common pattern is the dispose pattern \cite{wikipedia_dispose_pattern}, which is used across many object-oriented programming languages. Here, resources held by objects are released by calling methods like close(), release(), etc. This pattern is primarily used in those languages whose runtime environment have automatic garbage collection, such as C\# and Java. Other patterns regarding releasing resources include the \emph{Leasing pattern} and the \emph{Evictor pattern} \cite{resource-manager-patterns}.
+For web application development, resource management patterns can be used in both front- and backend. According to intellipaat.com \cite{best-web-dev-languages}, the 4 most popular languages for backend development in web applications are Python, php, Java, and C\#, all of which support garbage collection. The most used language for the frontend is JavaScript along with its frameworks including Angular, React, and VueJS. JavaScript also supports garbage collection as a form of memory management \cite{dev-mozilla-memory-management}.
+
+Browsers can promote similar behavior in websites themselves. WebKit \cite{webkit-website}, a web browser engine used by Safari and other apps on macOS, iOS, and Linux, automatically displays the following behavior when a page becomes inactive: 
+\begin{itemize}
+    \item window.requestAnimationFrame() is stopped,
+    \item CSS and SVG Animations are halted,
+    \item Timers are suspended \cite{webkit-blog}.
+\end{itemize}
+
+
+% --------------------------------------------------------------------
+\subsection{Open Only When Necessary} \label{sec:patterns-OpenOnlyWhenNecessary}
+\textbf{Original:} ``Open/start resources/services only when they are strictly necessary~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} In web applications, some resources require to be opened before using them. In addition, there exist services and or resources that improve user experience but are non-critical. It is possible to open/load these resources and services at the very start when accessing the web page for the first time. However, the resources will actively wait for events or requests and passively consume energy even though they are not in use.
+
+\textbf{Solution:} When accessing hardware, open resources only when necessary. During software development, identify non-critical services and load those only when necessary.
+
+\textbf{Example:} A web application opens the camera only when necessary for capturing an image - not earlier when the application has been started (see \autoref{OpenOnlyWhenNecessaryCode}). Another example can be found in \autoref{OpenOnlyWhenNecessaryCode2}. It shows how images can be loaded lazily in web applications.
+
+\begin{minipage}{\linewidth}
+    \begin{lstlisting}[caption={Code snippet showing the usage of the loading attribute to lazy-load images \cite{lazy-loading-code-example}}, label={OpenOnlyWhenNecessaryCode2}]
+img src=``image.png'' loading=``lazy'' alt=``...'' width=``200'' height=``200''
+\end{lstlisting}
+\end{minipage}
+
+\textbf{Discussion:} Various hardware resources are available to websites, \eg a camera, microphone, and speaker. There exist APIs, \eg the Media Capture and Streams API (Media Stream) \cite{media-streams-api}, which allow developers to manipulate audio- or video-related data, including the access of said hardware.
+
+In frontend development, there exists a widely used pattern called lazy loading. It allows for identifying non-critical resources and loading them only when necessary, avoiding unnecessary energy consumption. In addition, Tuaycharoen \etal show that lazy loading can increase the performance of web applications by 50\% due to an improved response time~\cite{Tuaycharoen2018}. The web application can use lazy loading in different scenarios and places. One typical use case happens during user interactions, such as scrolling and navigating.
+
+\input{RQ1/Listings/openWhenNeccessary.tex}
+
+% --------------------------------------------------------------------
+\subsection{Push over Poll} \label{sec:patterns-PushOverPoll}
+\textbf{Original:} ``Use push notifications to receive updates from resources, instead of actively querying resources (\ie polling)~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Handling updates from resources (\eg servers) is a crucial part of the web application design. Different approaches exist to get updates: the client repeatedly queries the server in set intervals to see if new data is available (\ie polling), or the server pushes new data to the client as soon as it is available. Since it is impossible to know if the server has new data available at this moment, the client continuously polling data will inevitably lead to unnecessary querying and thus may consume more energy.
+
+\textbf{Solution:} Use the pushing mechanism to get updates from resources.
+
+\textbf{Example:} Incorporate push notifications into the web application where possible. Listing \ref{pushoverpollcode} shows a possible implementation of such a push notification.
+
+\input{RQ1/Listings/pushOverPoll.tex}
+
+\textbf{Discussion:} To avoid sending requests that will return no update in order to reduce unnecessary energy consumption is relevant for mobile applications since users rely on batteries. Ayala \etal found that using the polling mechanism consumes up to 10\% more energy than using long polling and up to 7.5\%  more energy for WebSocket in Android phones~\cite{Ayala2019}. When users access a web page from a mobile device, we would expect similar findings. To our knowledge, there exists no research about energy reduction comparing pulling and polling for non-mobile devices.
+
+Web push notifications were introduced around 2015 by Google and Mozilla for Chrome 48 and Firefox 44, respectively \cite{web-push-notifications}. They are widely used in e-commerce and social media to keep users engaged \cite{blog-web-push-notifications}. Downsides of push notifications for mobile applications have been researched by Kollmann \etal \cite{Kollmann2017}. The main concern is privacy since crucial information like the user's location (\ie IP address) is shared with the notification service. Similar issues could possibly affect web push notifications.
+
+% --------------------------------------------------------------------
+\subsection{Power Save Mode} \label{sec:patterns-PowerSaveMode}
+\textbf{Original:} ``Provide an energy efficient mode in which user experience can drop for the sake of better energy usage~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Providing energy efficient modes in which some functionalities are restricted or even dropped entirely can be implemented for any application (mobile and web).
+
+\textbf{Solution:} Offer an energy-efficient mode in which the application consumes less energy.
+
+\textbf{Example:} BooHoo has introduced an energy-saving mode to its website (see Figure \ref{fig:boohoo}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{RQ1/Img/boohoo.png}
+    \caption{Screenshot of a website with energy-saving mode \cite{boohoo-website}.}
+    \label{fig:boohoo}
+\end{figure}
+
+\textbf{Discussion:} Providing energy-efficient modes in which some functionalities are restricted or even dropped entirely can be implemented for any mobile or web-based application. Using such an energy-efficient mode should reduce energy usage in any scenario. However, unless the user is on a device powered by a battery, they are unlikely to notice a reduction in energy consumption. 
+
+Web applications are accessed via browsers. While browsers are not web applications themselves, they can play a crucial role in controlling the energy consumption of websites by potentially allowing web applications to provide energy-saving modes. As of February 2023, Google Chrome has been reported to perform testing on functionality that allows websites to switch to battery-saving mode \cite{chrome-battery-saving-mode} \cite{github-battery-saving-demo}. The browser Opera offers a battery-saving mode that reduces energy consumption when browsing any website, even in non-battery powered devices \cite{opera-battery-saver}. We conclude that there is a growing awareness of power-saving modes in the web application domain.
+
+% --------------------------------------------------------------------
+\subsection{Power Awareness} \label{sec:patterns-PowerAwareness}
+\textbf{Original:} ``Have a different behavior when the device is connected/disconnected to a power station or has different battery levels~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} If web applications are used by devices without battery this pattern is not applicable. However, assuming the device used to access the web application has a battery, there are ways of adapting the behavior of an application according to the battery level or if the device is connected/disconnected.
+
+\textbf{Solution:} Enable or disable certain functionalities of the device according to its power status.
+
+\textbf{Example:} VueUse, a collection of Vue composition utilities, provides a reactive Battery Status API \cite{vueuse-useBattery}, which gives information about the system's battery level and charging status. For devices without battery, the boolean 'charging' will always be true.
+
+\textbf{Discussion:} Websites can access information about the system's battery charge level through various APIs, for example, framework-specific APIs like VueUse' \code{useBattery()} or more general ones like the Battery Status API \cite{dev-mozilla-battery-status-api}, which uses the built-in \texttt{window.navigator} property of the navigator object in web pages. Thus, it is possible for developers to implement different behavior depending on the battery level of the device. Concerns have been raised that companies may utilize this information to their benefit and monetize access to battery levels. When the battery is running low, users might make different decisions than otherwise.\footnote{Podcast Episode 'Your Brain on Uber' on the Hidden Brain Podcast released in May 2016, accessed in March 2023}
+
+Chrome has introduced a new feature called Energy Saver \cite{chrome-new-feature}, which limits background activity and visual effects (\eg animations and videos) as soon as the battery of the device reaches 20\%. Similarly, the aforementioned battery saving mode for the Opera browser can be configured to turn on automatically when the device is removed from the power station and, when unused, will send a reminder once the battery reaches 20\% that the mode is available \cite{opera-battery-saver}.
+
+% --------------------------------------------------------------------
+\subsection{Reduce Size} \label{sec:patterns-ReduceSize}
+\textbf{Original:} ``When transmitting data, reduce its size as much as possible~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Data transmission over a network is a routine operation in web applications, which can be energy greedy.
+
+\textbf{Solution:} Transmit only what is necessary; avoid sending unnecessary data. Use data compression.
+
+\textbf{Example:} Consider using headers \code{Accept-Encoding} and \code{Content-Encoding} for HTTP requests. Listing \ref{reducesizecode} shows an implementation where strings bigger than 1KB get compressed.
+
+
+\textbf{Discussion:} Data transmission is a routine operation in web applications. Moreover, such operations can be energy greedy. The International Energy Agency (IEA) estimated the global internet traffic of 2021 to be 3.4 ZB (1 zetabyte = 10\textsuperscript{21} bytes), which has led to an increase of up to 60\% in the global data transmission network energy use since 2015 \cite{data-transmission-of-data-centers}. Reducing internet traffic can be achieved by compressing data before transmission. However, the work of Barr \etal ~\cite{Barr2006}  shows that in some cases, there can be a net energy increase when compression is applied before transmission. The energy consumption difference depends on hardware factors such as the relative energy of CPU, memory, and network, as well as software factors, including compression ratio and memory access patterns. In their work, the authors have measured up to 31\% overall energy reduction when using adequate compressors and decompressors for sending compressed web data~\cite{Barr2006}.
+
+Not only can the data itself be compressed, but the request as a whole can be further optimized. Tools commonly used to make HTTP requests in web applications include XMLHttpRequest (XHR), Jquery Ajax, Fetch, Axios and Angular HttpClient \cite{Angular_Http_Client}. Using these packages allows developers to edit and adapt the requests being sent in their application, which allows, for example, the removal of unnecessary headers.
+
+\input{RQ1/Listings/reduceSize.tex}
+
+% --------------------------------------------------------------------
+\subsection{Suppress Logs} \label{sec:patterns-SuppressLogs}
+\textbf{Original:} ``Avoid using intensive logging ~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Logging is common practice in web applications. Therefore, suppressing logs can be applied.
+
+\textbf{Solution:} Refrain from extensive logging. Keep the logging rates below one message per second.
+
+\textbf{Example:} The console output in Listing \ref{suppresslogscode} shows an example of possible logs. The logging level is \textit{warning}. This logging level includes warnings, errors, and critical system failures.
+
+\input{RQ1/Listings/suprpressLog.tex}
+
+\textbf{Discussion:} Shaiful \etal found, that execution logs for debugging can influence energy consumption in Android applications~\cite{Shaiful2018}. They show that the generation of logs at rates of one message per second or more negatively impacts energy consumption. Logging is one of the basic functionalities of most web applications. It records valuable information for operating and maintaining the website, such as the running information, user operations, debugging, warnings, and error information of the application~\cite{Pan2022}. To our knowledge, no study exists on the energy impact of logging in web applications. However, we assume, that extensive logging can also impact power consumption in web applications. Further, web applications are usually deployed in production mode, which by design does not support debugging. Therefore, the number of debugging logs in deployed websites will be zero. Thus eliminating the possibility of higher energy consumption caused by debugging logs. However, there are still logs available in production mode. There exist different logging levels: critical, error, warning, info, and debug are among the most common ones \cite{python-docs-logging}. The impact of continuously logging for different purposes on the server side or in source code is yet to be investigated.
+
+% --------------------------------------------------------------------
+\subsection{Batch Operations} \label{sec:patterns-BatchOperations}
+\textbf{Original:} ``Batch multiple operations, instead of putting the device into an active state many times~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Batch processing is widely used in applications that contain tasks that can be executed without user interaction, also in web applications.
+
+\textbf{Solution:} Combine multiple operations into a batch for processing. By bundling multiple tasks, the overall efficiency can be improved, and possible tail energy consumption (energy consumption related to starting and stopping resources) can be reduced.
+
+\textbf{Example:} Use Job Scheduling APIs for managing multiple tasks.
+
+\input{RQ1/Listings/batchoperations.tex}
+
+\textbf{Discussion:} One concern when executing operations separately on mobile phones is tail energy consumption~\cite{cruz2019catalog}. When batching multiple tasks, tail energy consumption can be optimized since an active state can be maintained until all tasks are done and do not need to be re-activated for each operation individually. Background tasks, such as managing cellular connection, can be expensive but do not necessarily have to be executed in a specific time. Cruz \etal proposed to use Job scheduling APIs (\eg \texttt{android.app.job.JobScheduler}) for managing multiple background tasks occurring in a device. Job scheduling is also available for web applications. One example is the Google Cloud Scheduler API \cite{Google-cloude-scheduler-api}, which allows the scheduling of multiple tasks by use of cron jobs.
+
+For web application development, there exist batch processing frameworks \eg batch processing framework in Java EE \cite{javaee-batch-processing}. This framework executes tasks periodically or when resource usage is low.
+Common use cases for batch processing include billing, report generation, data format conversion, and image processing. Developers can even be mindful of batch operations during frontend development: when using the REST API, it is possible to make use of the batch mode, which allows the bundling of multiple individual requests into one larger request \cite{rest-api-batch-example} \cite{microsoft-batch-operations}.
+
+
+% --------------------------------------------------------------------
+\subsection{Cache} \label{sec:patterns-Cache}
+\textbf{Original:} ``Avoid performing unnecessary operations by using cache mechanisms~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Caching is widely adapted and used in web applications. Websites routinely collect data from the server. Browsers, for example, provide storage that can be utilized for caching.
+
+\textbf{Solution:} Utilize caching mechanisms to reduce network load.
+
+\textbf{Example:} Utilize local storage provided by the browser to avoid collecting the same data repeatedly. Listing \ref{cachecode} shows a code example for the frontend on how to cache an API response in the local storage.
+
+\input{RQ1/Listings/cache.tex}
+
+\textbf{Discussion:} Web caching is a well-known strategy that stores popular web objects that are likely to be visited in the near future in positions close to the user. Thus, web caching helps reduce network traffic. This mechanism can be implemented at three different levels: client level (browser cache), proxy level (proxy server cache), and original server level (cache server)~\cite{Ali2011}. Browser caching is located on the client side. Modern web browsers provide cache mechanisms, which are especially useful when a user wants to return to a page they have recently looked at. Proxy server cache is similar to browser caching but works on a much larger scale. When a request arrives at the proxy server, it checks its cache. If the desired object is available, the proxy sends the object to the client. If the object has expired or is unavailable, the proxy server sends a request to the original server and passes that response to the client. This object will also be stored from the proxy in its own cache for future requests. The last level on which caching mechanisms are commonly implemented is on the original server. This server-side caching aims to reduce the need for redundant computations or database retrievals~\cite{Ali2011}. Traditional methodologies for implementing web caching are based on time and size. They do not consider the events that will possibly happen in the future. Pernabas \etal propose to improve the performance of web proxy caching by adapting the Data Mining Classifier model based on Web User clustering and Weighted Random Indexing Methods~\cite{Pernabas2019}.
+
+
+% --------------------------------------------------------------------
+\subsection{Decrease Rate} \label{sec:patterns-DecreaseRate}
+\textbf{Original:} ``Increase time between syncs/sensor reads as much as possible~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} In web applications, data synchronization usually happens through requests. How often these requests are sent is determined by the architecture of the application and the loading mechanism chosen by the developers.
+
+\textbf{Solution:} Increase the time between requests to the backend as much as possible as long as it does not harm performance or user experience. Consider implementing dynamic or lazy loading. Examine the possibility of using pushing mechanisms over polling.
+
+\textbf{Example:} Consider a web application that shows the availability of books in a library. Updating the availability several times throughout the day will be accurate enough for this use case. There is no need to synchronize and update multiple times per minute.
+
+\textbf{Discussion:} See Discussion in \ref{sec:patterns-PushOverPoll} Push Over Poll and in \ref{sec:patterns-OpenOnlyWhenNecessary} Open Only When Necessary.
+
+
+% --------------------------------------------------------------------
+\subsection{User Knows Best} \label{sec:patterns-UserKnowsBest}
+\textbf{Original:} ``Allow users to enable/disable certain features in order to save energy~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Implementations aiming for energy efficiency often come with a trade-off between features and power consumption~\cite{cruz2019catalog}. Different users accept different trade-offs. For example, some users might tolerate the absence of certain features for better energy efficiency and vice versa.
+
+\textbf{Solution:} Allow for customization of preferences by the end user regarding energy-critical features.
+
+\textbf{Example:} With the energy-saving mode on their website, BooHoo \cite{boohoo-website} allows users to choose between certain features (bright screen and full availability of images) and energy consumption (see Figure \ref{fig:boohoo}).
+
+\textbf{Discussion:} See Discussion in \ref{sec:patterns-PowerSaveMode} Power Save Mode.
+
+
+% --------------------------------------------------------------------
+\subsection{Inform Users} \label{sec:patterns-InformUsers}
+\textbf{Original:} ``Let the user know if the app is doing any battery intensive operations~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} In web applications with client-server architecture, computation-heavy operations usually happen in the backend. The battery level of the device through which the user is accessing the web page does not have any impact on these operations. While it is technically possible to alert users to power-intensive operations in the backend, the impact on user experience remains to be researched.
+
+\textbf{Solution:} Give users informative feedback when the web application performs power-intensive operations.
+
+\textbf{Example:} Imagine a web application that simulates character strength for a video game based on gear. The user can choose different items (\ie weapon or armor), and the web application iterates over all possible combinations to find the best one. Raider.io \cite{raider-iO-website} already provides the number of combinations that will be simulated. Information about the energy consumption could easily be added as well \eg low, average, or high consumption. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{RQ1/Img/Raidbots.jpg}
+    \caption{Website showing the number of all possible combinations of the gear selected by the user \cite{raider-iO-website}.}
+    \label{fig:raidbots}
+\end{figure}
+
+\textbf{Discussion:} In HCI (Human Computer Interaction), Shneiderman has proposed eight golden rules \cite{shneidermans-eight-golden-rules}. 'Offer Informative Feedback' proposes offering users feedback during or immediately after an action. Such informative feedback could easily be extended with remarks about power consumption. Since power-intensive operations usually happen on the server, this does not influence the power consumption of the clients' devices. The impact of this pattern on user experience remains to be researched.
+
+
+% --------------------------------------------------------------------
+\subsection{Enough Resolution} \label{sec:patterns-EnoughResolution}
+\textbf{Original:} ``Collect or provide high accuracy data only when strictly necessary~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Web pages routinely collect data from web servers and provide and display this data to the user. Therefore, it is possible for web applications to collect and provide high-accuracy data only when necessary.
+
+\textbf{Solution:} Study the importance of the collected and provided data to the user experience. Find the optimal balance between quality and size. 
+
+\textbf{Example:} Consider a game web application. High resolution and high frame rates are necessary during game play, but when the user is in the menu, using lower frame rates is possible without reducing the overall user experience.
+
+\textbf{Discussion:} Collection and manipulation of high-resolution data requires more resources (\eg memory, processing, capacity, etc.) than when using low resolution~\cite{cruz2019catalog}. Thus, the energy consumption is higher when processing high-resolution data.
+Greenspector, a measurement and analysis solution to reduce the environmental impact of mobile and web applications, has performed a study investigating the energy impact of different image formats and resolutions on websites \cite{energy-consumption-image-format}. They found that energy consumption can be reduced by a factor of 2 for image qualities that remain high after compression and by a factor of 6 for compression to low-quality images. Chiasserini \etal~\cite{Chiasserini2002} conducted a study comparing the overall energy consumption of transmitting compressed versus non-compressed videos and still images. They show that, for example, compression of JPEG images with integer DCT kernel reduces energy costs compared to non-compressed images.
+
+Another idea of applying this pattern to web applications could be to store, for example, several versions of the same image in different resolutions in the backend. Then the frontend can request the appropriate level of resolution depending on the use case and need not request a high-resolution image every time.
+
+
+% --------------------------------------------------------------------
+\subsection{Kill Abnormal Tasks} \label{sec:patterns-KillAbnormalTasks}
+\textbf{Original:} ``Provide means of interrupting energy greedy operations (\eg using timeouts, or users input)~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Timeouts are used frequently in web applications. They can be used in many different contexts. For example, session timeouts are used to handle the situation when a user does not perform any action on a website during a set interval (determined by the web server). Additionally, it is possible to offer manual means of interruption. As stated in the context of \ref{sec:patterns-InformUsers}, one of Shneidermans' eight golden rules proposes to give users informative feedback immediately after an action has been performed. It is possible to inform users of power-intensive operations and, in the same dialog, offer means of manually interrupting those operations.
+
+\textbf{Solution:} Provide means of interrupting energy greedy operations.
+
+\textbf{Example:} Implementation of a timeout can be seen in Listing \ref{killabnormaltaskscode}. Here, a timeout has been set to manage the calculation of different values needed to create a bill. If something goes wrong during the calculations, the timeout ensures that the abnormal behavior gets interrupted and that the resource (in this case, a worker) will be freed up again.
+
+\input{RQ1/Listings/killAbnormalTask.tex}
+
+
+\textbf{Discussion:} The main concern for this pattern in mobile phones is the battery level of the device~\cite{cruz2019catalog}. In web applications, energy-intensive operations typically happen in the backend. This does not impact the energy consumption of the system through which the end user is accessing the web page. 
+However, timeouts are already being used in web applications. One frequent use case is associated with a WebDriver session. Here, various timeouts control behaviors for script injection, document navigation, and element retrieval \cite{dev-mozilla-timeouts}.  Additionally, it is conceivable for developers to inform users about computation-heavy operations (see Discussion in \ref{sec:patterns-InformUsers}). In HCI, ten usability heuristics by Nielsen exist \cite{nielsen-ten-usability-heuristics}. One of which addresses user control and freedom. This heuristic states that it should always be possible for users to exit the current interaction with, for example, a cancel button. By following this suggestion, developers can ensure that any kind of interaction or task can be interrupted. Therefore, providing a means of interrupting especially energy-greedy operations would follow the usability heuristics by Nielsen.
+
+
+% --------------------------------------------------------------------
+\subsection{No Screen Interaction} \label{sec:patterns-NoScreenInteraction}
+\textbf{Original:} ``Whenever possible allow interaction without using the display~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Most websites require the continuous usage of the screen. There exist a few use cases where interactions can happen without using the screen (\eg allowing keyboard input to pause/start videos or to adjust volume). However, shutting down the screen while actively using a website seems only applicable to a limited number of use cases.
+
+\textbf{Solution:} Allow users to interact with the web application using alternative interfaces (\eg keyboard input, audio).
+
+\textbf{Example:} A website that provides an audio player could allow the screen to turn off while playing music. As an alternative interface, buttons on earphones or keyboard inputs could be used to stop/start or skip songs.
+
+\textbf{Discussion:} One way to interact with web pages without using the screen is using a screen reader. A screen reader is part of the assistive technology (AT) that renders text and image content as speech or braille output. Users can use shortcuts on the keyboard to interact with the web pages. Popular screen readers include VoiceOver by Apple \cite{VoiceOver-Apple} and JAWS \cite{JAWS}. Such screen reader technologies have been developed for users who have visual impairments. Further research is necessary to understand the energy consumption of such assistive technology.
+
+
+%---------------------------------------------------------------------
+
+\subsection{Avoid Extraneous Graphics and Animations} \label{sec:patterns-AvoidExtraneousGraphicsAndAnimations}
+\textbf{Original:} ``Graphics and animations are important for improving the user experience. However, they can also be battery intensive - use them with moderation~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Graphics and animations can be used anywhere on a GI. Since websites provide interactive GIs, this pattern can also be applied in web applications.
+
+\textbf{Solution:} Observe the importance of graphics and animations on the user experience. Avoid using graphics animations or high-quality graphics. If necessary, resort to low frame rates and/or low resolution.
+
+\textbf{Example:} Figure \ref{fig:portal_energieflüsse} shows an example of a website, that uses simple, non-animated graphics to improve the user experience.
+
+  \begin{figure}
+     \centering
+     \includegraphics[width=\linewidth]{RQ1/Img/portal_energieflüsse.png}
+     \caption{Screenshot of the SEL customer portal dashboard, where simple, non-animated graphics are used to improve the user experience.}
+     \label{fig:portal_energieflüsse}
+ \end{figure}
+
+\textbf{Discussion:} Using graphics and animations only when they improve the user experience seems reasonable. For further explanations, also see Discussion in \ref{sec:patterns-EnoughResolution} Enough Resolution.
+
+
+% --------------------------------------------------------------------
+\subsection{Manual Sync, On Demand} \label{sec:patterns-ManualSyncOnDemand}
+\textbf{Original:} ``Perform tasks exclusively when requested by the user~\cite{cruz2019catalog}."
+
+\paragraph{Adaptation to Web}\mbox{}
+
+\textbf{Context:} Some tasks, which are not strictly necessary for some application use cases, can be energy intensive.
+
+\textbf{Solution:} Provide a mechanism that allows users to trigger energy-intensive tasks manually. For example, a button in the UI.
+
+\textbf{Example:} Perform actual calculations for a bill only when the user has requested it by clicking a button. Do not do operation-intensive pre-calculations on loading in case no bill was requested.
+
+\input{RQ1/Listings/manualsync.tex}
+
+\textbf{Discussion:} Energy-intensive tasks (in the backend) do not influence the battery of the device that is visiting the website. One of the most frequently performed operations in the frontend is fetching data \ie sending requests. These requests can indeed trigger energy-intensive tasks in the backend. Shneidermans eight golden rules of interface design state, that an application should support the (users) internal locus of control \cite{shneidermans-eight-golden-rules}. This means that users need to have control and freedom so that they can feel that they are in control of the system themselves.
+
+
+
+\section{\texorpdfstring{$RQ_2$}: Industry Insights on \EPS} 
+
+
+\section{\texorpdfstring{$RQ_3$}: Impact of \EPS} 
 
 \input{RQ3/Img/rq3-DRR-cumulative-IA-eng}
 \input{RQ3/Img/rq3-lazyload-cumulative-IA-eng}
 
 \input{RQ3/Img/rq3-DRR-package-DRAM-eng}
 \input{RQ3/Img/rq3-lazyload-package-DRAM-eng}
-
-
-

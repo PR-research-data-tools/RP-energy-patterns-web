@@ -1,4 +1,4 @@
-\begin{minipage}
+\begin{minipage}{0.95\linewidth}
     \begin{lstlisting}[caption={Usage of job scheduling in implementation to be able to batch operations}, label={BatchOperationsCode}]
 def start_process():
     _create_and_return_bills()
@@ -23,3 +23,27 @@ def start_process():
     ...
 \end{lstlisting}
 \end{minipage}
+
+\begin{comment}
+\begin{minipage}{\linewidth}
+    \begin{lstlisting}[caption={Example implementation showing the usage of Redis job scheduling in order to batch billing calculations.}, label={BatchOperationsCode}]
+def start_billing_process():
+    ...
+    rate_calculation_job = django_redis_queue.enqueue(_setup, billing_run, 
+                                                      job_timeout=7200)
+    list_of_jobs = []
+
+    # Generate bills using Redis workers.
+    for bill in list_of_bills:
+        list_of_jobs.append(
+            django_redis_queue.enqueue(_generate_bill, bill_for_user,
+                                        rate_calculation_job.id,
+                                        depends_on=rate_calculation_job))
+                              
+    
+    # Concatenate all individual bills.
+    django_redis_queue.enqueue(concat_files, all_bills, depends_on=list_of_jobs)
+    ...
+\end{lstlisting}
+\end{minipage}
+\end{comment}

@@ -1,0 +1,14 @@
+\begin{minipage}{0.95\linewidth}
+  \begin{lstlisting}[caption={Implementation of a button which starts the billing process only when pressed.},label={manualsynchondemandcode}]
+<template #button-bar>
+<el-button
+  type="primary"
+  size="large"
+  :loading="isBillingProcessRunning"
+  @click="StartBillingCalculations"
+>
+  {{ $t('page.component.button.startBillingCalculations') }}
+</el-button>
+</template>
+\end{lstlisting}
+\end{minipage}
