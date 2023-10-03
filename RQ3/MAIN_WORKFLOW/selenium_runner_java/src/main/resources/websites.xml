@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <comment>xml example</comment>
+  <entry key="dynamicRetryDelay">2</entry>
+  <entry key="dynamicRetryDelay.url.0">https://YOURDOMAIN/ese/dynamic_retry_delay</entry>
+  <entry key="dynamicRetryDelay.url.1">https://YOURDOMAIN/ese/dynamic_retry_delay/?dynamic</entry>
+  <entry key="lazyLoading">2</entry>
+  <entry key="lazyLoading.url.0">https://YOURDOMAIN/ese/lazy_loading/?loading=eager</entry>
+  <entry key="lazyLoading.url.1">https://YOURDOMAIN/ese/lazy_loading/?loading=lazy</entry>
+</properties>

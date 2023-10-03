@@ -1,0 +1,37 @@
+dynamicRetryDelay
+====================
+python show_plots.py 0 "Total Elapsed Time (sec)" " sec"
+python show_plots.py 0 "Measured RDTSC Frequency (GHz)" " GHz"
+python show_plots.py 0 "Cumulative Package Energy_0 (Joules)" " Joules"
+python show_plots.py 0 "Cumulative Package Energy_0 (mWh)" " mWh"
+python show_plots.py 0 "Average Package Power_0 (Watt)" " Watt"
+python show_plots.py 0 "Cumulative IA Energy_0 (Joules)" " Joules"
+python show_plots.py 0 "Cumulative IA Energy_0 (mWh)" " mWh"
+python show_plots.py 0 "Average Package IA_0 (Watt)" " Watt"
+python show_plots.py 0 "Cumulative DRAM Energy_0 (Joules)" " Joules"
+python show_plots.py 0 "Cumulative DRAM Energy_0 (mWh)" " mWh"
+python show_plots.py 0 "Average Package DRAM_0 (Watt)" " Watt"
+python show_plots.py 0 "Average Package Temperature_0(C)" "°C"
+python show_plots.py 0 "Median Package Temperature_0(C)" "°C"
+python show_plots.py 0 "Minimum Package Temperature_0(C)" "°C"
+python show_plots.py 0 "Maximum Package Temperature_0(C)" "°C"
+
+
+
+lazyLoading
+====================
+python show_plots.py 1 "Total Elapsed Time (sec)" " sec"
+python show_plots.py 1 "Measured RDTSC Frequency (GHz)" " GHz"
+python show_plots.py 1 "Cumulative Package Energy_0 (Joules)" " Joules"
+python show_plots.py 1 "Cumulative Package Energy_0 (mWh)" " mWh"
+python show_plots.py 1 "Average Package Power_0 (Watt)" " Watt"
+python show_plots.py 1 "Cumulative IA Energy_0 (Joules)" " Joules"
+python show_plots.py 1 "Cumulative IA Energy_0 (mWh)" " mWh"
+python show_plots.py 1 "Average Package IA_0 (Watt)" " Watt"
+python show_plots.py 1 "Cumulative DRAM Energy_0 (Joules)" " Joules"
+python show_plots.py 1 "Cumulative DRAM Energy_0 (mWh)" " mWh"
+python show_plots.py 1 "Average Package DRAM_0 (Watt)" " Watt"
+python show_plots.py 1 "Average Package Temperature_0(C)" "°C"
+python show_plots.py 1 "Median Package Temperature_0(C)" "°C"
+python show_plots.py 1 "Minimum Package Temperature_0(C)" "°C"
+python show_plots.py 1 "Maximum Package Temperature_0(C)" "°C"

@@ -1,0 +1,20 @@
+{
+    "lazyLoading": {
+        "name": "Lazy Loading",
+        "variants": [
+            {"shortname": "chrome_eager", "fullname": "Chrome, eager loading"},
+            {"shortname": "chrome_lazy", "fullname": "Chrome, lazy loading"},
+            {"shortname": "safari_eager", "fullname": "Safari, eager loading"},
+            {"shortname": "safari_lazy", "fullname": "Safari, lazy loading"}
+        ]
+    },
+    "dynamicRetryDelay": {
+        "name": "Dynamic Retry Delay",
+        "variants": [
+            {"shortname": "chrome_static", "fullname": "Chrome, static retry delay"},
+            {"shortname": "chrome_dynamic", "fullname": "Chrome, dynamic retry delay"},
+            {"shortname": "safari_static", "fullname": "Safari, static retry delay"},
+            {"shortname": "safari_dynamic", "fullname": "Safari, dynamic retry delay"}
+        ]
+    }
+}
