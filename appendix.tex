@@ -57,7 +57,6 @@ For each pattern, we provide the original definition given by Cruz \etal, the ad
 
 
 \textbf{Discussion:} In mobile devices, the display alongside the GSM module are the two components with the highest power consumption ~\cite{Carroll2010}. Providing a dark UI color theme on devices with OLED (Organic Light Emitting Diodes) screens has been shown to reduce the display's power consumption up to 83\%, which can translate into a 69\% total phone power reduction~\cite{Dash2021}. This indicates that switching from light to dark mode saves a significant amount of battery.
-
 The percentage of global web traffic recorded on mobile phones has increased drastically over the past decade. In February 2023, 60.67\% of all web traffic came through mobile phones \cite{statista}. Therefore, we expect similar benefits to battery life when accessing a web page with dark UI colors from a smartphone. To our knowledge, no research exists on energy consumption reduction of dark UI colors in non-battery-powered devices. We assume that depending on the monitor type used to display the web pages - namely, the newly emerging OLED monitors - there will be a reduction of energy consumption. Generally, we see dark UI colors catching on in web applications with motivations not only restricted to reducing power consumption: they range from adjusting brightness to current lighting conditions and improved display readability in dark environments~\cite{Mantiuk2009}~\cite{Rempel2012}, to having beneficial impact on users with reduced vision in certain circumstances~\cite{Bangor1999} and of course reduce power consumption on battery-powered devices~\cite{Dong2009}. Given this pattern's various benefits, it would be interesting to survey users to gather other possible benefits.
 
 % --------------------------------------------------------------------
@@ -76,8 +75,8 @@ The percentage of global web traffic recorded on mobile phones has increased dra
 
 \textbf{Discussion:} Research concerning the impact of energy consumption in connection with (re-)accessing resources is being conducted in different subdomains of computer science already. For example, in Wireless Sensor Networks (WSN), energy consumption is one of the main design constraints alongside scalability, delay, traffic adaptation, throughput, and overheads. Therefore, an efficient Medium Access Control (MAC) protocol is required~\cite{Kaur2016}. Cho \etal proposed a back-off algorithm for MAC protocols in WSN that uses a dynamic contention period based on the remaining energy (\ie battery level) of each sensor node~\cite{Cho2006}. They showed that this algorithm saves more power and prolongs the lifetime of sensor nodes compared to conventional back-off algorithms. We assume that using this and similar back-off algorithms would also decrease power consumption in other contexts, not only in wireless sensor networks.
 
-A direct consequence of re-accessing a resource is that the end user experiences a delay while interacting with the application. Whenever a user experiences a delay in communication over a network, we speak of latency. Network latency can be described as the time it takes for a data package to travel from one point in the network to another.  There exists no agreement on what a good latency is. For example, an acceptable latency in gaming is around 40 - 60 milliseconds or less \cite{gaming-latency},
- while web domains accept values below 150 milliseconds for loading websites \cite{website-latency}
+A direct consequence of re-accessing a resource is that the end user experiences a delay while interacting with the application. Whenever a user experiences a delay in communication over a network, we speak of latency. Network latency can be described as the time it takes for a data package to travel from one point in the network to another.  There exists no agreement on what a good latency is. For example, an acceptable latency in gaming is around 40 - 60 milliseconds or less \cite{gaming_latency},
+ while web domains accept values below 150 milliseconds for loading websites \cite{website_latency}
 and below 100 milliseconds
 when streaming videos or video conferencing \cite{latency-video}. This implies that as developers, we must be aware of the web application's purpose and aim for the maximum latency. While measuring the energy impact, we need to consider the sources, the domain, and the medium through which the internet is accessed as the latency is significantly lower when using an Ethernet connection compared to Wi-Fi \cite{ethernet-vs-wifi}. 
 
@@ -112,7 +111,7 @@ In the context of web applications, its data, in the form of content, does not n
 \textbf{Example:} Soundcloud uses React Redux in their techstack, which includes the functionality of garbage collection \cite{Garbagecollect}.
 
 \textbf{Discussion:} There exist a number of resource management patterns in software development. For instance, Resource manager patterns \cite{design-pattern-resource-manager} for embedded and real-time systems utilize lists to keep track of free and busy resources to figure out how to allocate and free up resources in the system. Another common pattern is the dispose pattern \cite{wikipedia_dispose_pattern}, which is used across many object-oriented programming languages. Here, resources held by objects are released by calling methods like close(), release(), etc. This pattern is primarily used in those languages whose runtime environment have automatic garbage collection, such as C\# and Java. Other patterns regarding releasing resources include the \emph{Leasing pattern} and the \emph{Evictor pattern} \cite{resource-manager-patterns}.
-For web application development, resource management patterns can be used in both front- and backend. According to intellipaat.com \cite{best-web-dev-languages}, the 4 most popular languages for backend development in web applications are Python, php, Java, and C\#, all of which support garbage collection. The most used language for the frontend is JavaScript along with its frameworks including Angular, React, and VueJS. JavaScript also supports garbage collection as a form of memory management \cite{dev-mozilla-memory-management}.
+For web application development, resource management patterns can be used in both front- and backend. According to intellipaat.com \cite{best-web-dev-languages}, the 4 most popular languages for backend development in web applications are Python, php, Java, and C\#, all of which support garbage collection. The most used language for the frontend is JavaScript along with its frameworks including Angular, React, and VueJS. JavaScript also supports garbage collection as a form of memory management \cite{dev_mozilla_memory_management}.
 
 Browsers can promote similar behavior in websites themselves. WebKit \cite{webkit-website}, a web browser engine used by Safari and other apps on macOS, iOS, and Linux, automatically displays the following behavior when a page becomes inactive: 
 \begin{itemize}
@@ -162,7 +161,7 @@ In frontend development, there exists a widely used pattern called lazy loading.
 
 \textbf{Discussion:} To avoid sending requests that will return no update in order to reduce unnecessary energy consumption is relevant for mobile applications since users rely on batteries. Ayala \etal found that using the polling mechanism consumes up to 10\% more energy than using long polling and up to 7.5\%  more energy for WebSocket in Android phones~\cite{Ayala2019}. When users access a web page from a mobile device, we would expect similar findings. To our knowledge, there exists no research about energy reduction comparing pulling and polling for non-mobile devices.
 
-Web push notifications were introduced around 2015 by Google and Mozilla for Chrome 48 and Firefox 44, respectively \cite{web-push-notifications}. They are widely used in e-commerce and social media to keep users engaged \cite{blog-web-push-notifications}. Downsides of push notifications for mobile applications have been researched by Kollmann \etal \cite{Kollmann2017}. The main concern is privacy since crucial information like the user's location (\ie IP address) is shared with the notification service. Similar issues could possibly affect web push notifications.
+Web push notifications were introduced around 2015 by Google and Mozilla for Chrome 48 and Firefox 44, respectively. \footnote{\url{https://www.digitalmarketer.com/blog/use-web-push-notifications/}} They are widely used in e-commerce and social media to keep users engaged \cite{blog-web-push-notifications}. Downsides of push notifications for mobile applications have been researched by Kollmann \etal \cite{Kollmann2017}. The main concern is privacy since crucial information like the user's location (\ie IP address) is shared with the notification service. Similar issues could possibly affect web push notifications.
 
 % --------------------------------------------------------------------
 \subsection{Power Save Mode} \label{sec:patterns-PowerSaveMode}
@@ -185,7 +184,7 @@ Web push notifications were introduced around 2015 by Google and Mozilla for Chr
 
 \textbf{Discussion:} Providing energy-efficient modes in which some functionalities are restricted or even dropped entirely can be implemented for any mobile or web-based application. Using such an energy-efficient mode should reduce energy usage in any scenario. However, unless the user is on a device powered by a battery, they are unlikely to notice a reduction in energy consumption. 
 
-Web applications are accessed via browsers. While browsers are not web applications themselves, they can play a crucial role in controlling the energy consumption of websites by potentially allowing web applications to provide energy-saving modes. As of February 2023, Google Chrome has been reported to perform testing on functionality that allows websites to switch to battery-saving mode \cite{chrome-battery-saving-mode} \cite{github-battery-saving-demo}. The browser Opera offers a battery-saving mode that reduces energy consumption when browsing any website, even in non-battery powered devices \cite{opera-battery-saver}. We conclude that there is a growing awareness of power-saving modes in the web application domain.
+Web applications are accessed via browsers. While browsers are not web applications themselves, they can play a crucial role in controlling the energy consumption of websites by potentially allowing web applications to provide energy-saving modes. As of February 2023, Google Chrome has been reported to perform testing on functionality that allows websites to switch to battery-saving mode \cite{chrome_battery_saving_mode} \cite{github_battery_saving_demo}. The browser Opera offers a battery-saving mode that reduces energy consumption when browsing any website, even in non-battery powered devices \cite{opera-battery-saver}. We conclude that there is a growing awareness of power-saving modes in the web application domain.
 
 % --------------------------------------------------------------------
 \subsection{Power Awareness} \label{sec:patterns-PowerAwareness}
@@ -213,10 +212,10 @@ Chrome has introduced a new feature called Energy Saver \cite{chrome-new-feature
 
 \textbf{Solution:} Transmit only what is necessary; avoid sending unnecessary data. Use data compression.
 
-\textbf{Example:} Consider using headers \code{Accept-Encoding} and \code{Content-Encoding} for HTTP requests. Listing \ref{reducesizecode} shows an implementation where strings bigger than 1KB get compressed.
+\textbf{Example:} Consider using headers \emph{Accept-Encoding} and \emph{Content-Encoding} for HTTP requests. Listing \ref{reducesizecode} shows an implementation where strings bigger than 1KB get compressed.
 
 
-\textbf{Discussion:} Data transmission is a routine operation in web applications. Moreover, such operations can be energy greedy. The International Energy Agency (IEA) estimated the global internet traffic of 2021 to be 3.4 ZB (1 zetabyte = 10\textsuperscript{21} bytes), which has led to an increase of up to 60\% in the global data transmission network energy use since 2015 \cite{data-transmission-of-data-centers}. Reducing internet traffic can be achieved by compressing data before transmission. However, the work of Barr \etal ~\cite{Barr2006}  shows that in some cases, there can be a net energy increase when compression is applied before transmission. The energy consumption difference depends on hardware factors such as the relative energy of CPU, memory, and network, as well as software factors, including compression ratio and memory access patterns. In their work, the authors have measured up to 31\% overall energy reduction when using adequate compressors and decompressors for sending compressed web data~\cite{Barr2006}.
+\textbf{Discussion:} Data transmission is a routine operation in web applications. Moreover, such operations can be energy greedy. The International Energy Agency (IEA) estimated the global internet traffic of 2021 to be 3.4 ZB (1 zetabyte = 10\textsuperscript{21} bytes), which has led to an increase of up to 60\% in the global data transmission network energy use since 2015 \cite{data_transmission_of_data_centers}. Reducing internet traffic can be achieved by compressing data before transmission. However, the work of Barr \etal ~\cite{Barr2006}  shows that in some cases, there can be a net energy increase when compression is applied before transmission. The energy consumption difference depends on hardware factors such as the relative energy of CPU, memory, and network, as well as software factors, including compression ratio and memory access patterns. In their work, the authors have measured up to 31\% overall energy reduction when using adequate compressors and decompressors for sending compressed web data~\cite{Barr2006}.
 
 Not only can the data itself be compressed, but the request as a whole can be further optimized. Tools commonly used to make HTTP requests in web applications include XMLHttpRequest (XHR), Jquery Ajax, Fetch, Axios and Angular HttpClient \cite{Angular_Http_Client}. Using these packages allows developers to edit and adapt the requests being sent in their application, which allows, for example, the removal of unnecessary headers.
 
@@ -315,7 +314,7 @@ Common use cases for batch processing include billing, report generation, data f
 
 \textbf{Solution:} Give users informative feedback when the web application performs power-intensive operations.
 
-\textbf{Example:} Imagine a web application that simulates character strength for a video game based on gear. The user can choose different items (\ie weapon or armor), and the web application iterates over all possible combinations to find the best one. Raider.io \cite{raider-iO-website} already provides the number of combinations that will be simulated. Information about the energy consumption could easily be added as well \eg low, average, or high consumption. 
+\textbf{Example:} Imagine a web application that simulates character strength for a video game based on gear. The user can choose different items (\ie weapon or armor), and the web application iterates over all possible combinations to find the best one. Raider.io \cite{raider_iO_website} already provides the number of combinations that will be simulated. Information about the energy consumption could easily be added as well \eg low, average, or high consumption. 
 
 
 \begin{figure}
@@ -417,7 +416,7 @@ However, timeouts are already being used in web applications. One frequent use c
 
 \textbf{Solution:} Provide a mechanism that allows users to trigger energy-intensive tasks manually. For example, a button in the UI.
 
-\textbf{Example:} Perform actual calculations for a bill only when the user has requested it by clicking a button. Do not do operation-intensive pre-calculations on loading in case no bill was requested.
+\textbf{Example:} The company perform actual calculations for a bill only when the user has requested it by clicking a button. They do not do operation-intensive pre-calculations on loading in case no bill was requested.
 
 \input{RQ1/Listings/manualsync.tex}
 
@@ -426,6 +425,33 @@ However, timeouts are already being used in web applications. One frequent use c
 
 
 \section{\texorpdfstring{$RQ_2$}: Industry Insights on \EPS} 
+We applied thematic analysis to developer excerpts to identify the rationale behind their concerns for \eps as shown in \autoref{fig:rq2-results-eng-patterns-motivation} and \autoref{tab:eng-patterns-motivation}.
+
+\begin{figure}[ht]
+    \includegraphics[width=\linewidth]{RQ2/Img/rq2-results-eng-patterns-motivation.pdf}
+	\caption{Developer concerns \& motivations for patterns}
+	\label{fig:rq2-results-eng-patterns-motivation}	
+\end{figure}
+
+
+\begin{table*}[tbh]
+	\begin{center}
+		\caption{ Excerpts from Developers on their motivation for \eps and corresponding codes for the motivations}
+		\label{tab:eng-patterns-motivation}
+		\begin{tabular}{p{0.17\textwidth}p{0.5\textwidth}p{0.29\textwidth}}
+  \toprule
+  			\textbf{Developers} & \textbf{Excerpts} & \textbf{Codes} \\\midrule
+     P1 (moderately concerned) & \emph{\EAPS correlates with efficiency and computational complexity.} & Efficiency, Complexity
+\\
+P5 (somewhat concerned)                           & \emph{It depends if its locally run, or on the cloud. If local, I don't really care. If GPUs are involved or the cloud, I am more concerned because I read about energy consumption of large data centers, and I know that GPUs consume a lot of power.}   &  Local computation, Cloud computation, GPU energy consumption \\
+P6 (somewhat concerned) &
+\emph{Application optimization and performance are still more important than energy optimization.}
+& Optimization, Performance \\
+
+ \hline
+\end{tabular}
+\end{center}
+\end{table*}
 
 
 \section{\texorpdfstring{$RQ_3$}: Impact of \EPS} 
