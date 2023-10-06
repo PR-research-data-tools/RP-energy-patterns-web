@@ -47,7 +47,7 @@ For each pattern, we provide the original definition given by Cruz \etal, the ad
 
 \textbf{Solution:} Provide a UI with dark background colors.
 
-\textbf{Example:} There already exist websites that provide dark UI colors like wand.ai (see Figure \ref{fig:wandb} \footnote{\url{https://wandb.ai/site}}).
+\textbf{Example:} There already exist websites that provide dark UI colors like wand.ai (see Figure \ref{fig:wandb} \cite{wandb}).
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{RQ1/Img/wandbAI.png}
@@ -109,8 +109,8 @@ In the context of web applications, its data, in the form of content, does not n
 \textbf{Solution:} Release unnecessary resources and services. This includes releasing the hardware resources that are no longer used (\eg camera after a video call) and applying resource management patterns (\eg garbage collection) during software development.
 
 \textbf{Example:} Soundcloud uses React Redux in their techstack, which includes the functionality of garbage collection \cite{Garbagecollect}.
+\textbf{Discussion:} There exist a number of resource management patterns in software development. For instance, Resource manager patterns \cite{design_pattern_resource_manager} for embedded and real-time systems utilize lists to keep track of free and busy resources to figure out how to allocate and free up resources in the system. Another common pattern is the dispose pattern \cite{wikipedia_dispose_pattern}, which is used across many object-oriented programming languages. Here, resources held by objects are released by calling methods like close(), release(), etc. This pattern is primarily used in those languages whose runtime environment have automatic garbage collection, such as C\# and Java. Other patterns regarding releasing resources include the \emph{Leasing pattern} and the \emph{Evictor pattern} \cite{resource_manager_patterns}.
 
-\textbf{Discussion:} There exist a number of resource management patterns in software development. For instance, Resource manager patterns \cite{design-pattern-resource-manager} for embedded and real-time systems utilize lists to keep track of free and busy resources to figure out how to allocate and free up resources in the system. Another common pattern is the dispose pattern \cite{wikipedia_dispose_pattern}, which is used across many object-oriented programming languages. Here, resources held by objects are released by calling methods like close(), release(), etc. This pattern is primarily used in those languages whose runtime environment have automatic garbage collection, such as C\# and Java. Other patterns regarding releasing resources include the \emph{Leasing pattern} and the \emph{Evictor pattern} \cite{resource-manager-patterns}.
 For web application development, resource management patterns can be used in both front- and backend. According to intellipaat.com \cite{best-web-dev-languages}, the 4 most popular languages for backend development in web applications are Python, php, Java, and C\#, all of which support garbage collection. The most used language for the frontend is JavaScript along with its frameworks including Angular, React, and VueJS. JavaScript also supports garbage collection as a form of memory management \cite{dev_mozilla_memory_management}.
 
 Browsers can promote similar behavior in websites themselves. WebKit \cite{webkit-website}, a web browser engine used by Safari and other apps on macOS, iOS, and Linux, automatically displays the following behavior when a page becomes inactive: 
@@ -200,7 +200,7 @@ Web applications are accessed via browsers. While browsers are not web applicati
 
 \textbf{Discussion:} Websites can access information about the system's battery charge level through various APIs, for example, framework-specific APIs like VueUse' \code{useBattery()} or more general ones like the Battery Status API \cite{dev-mozilla-battery-status-api}, which uses the built-in \texttt{window.navigator} property of the navigator object in web pages. Thus, it is possible for developers to implement different behavior depending on the battery level of the device. Concerns have been raised that companies may utilize this information to their benefit and monetize access to battery levels. When the battery is running low, users might make different decisions than otherwise.\footnote{Podcast Episode 'Your Brain on Uber' on the Hidden Brain Podcast released in May 2016, accessed in March 2023}
 
-Chrome has introduced a new feature called Energy Saver \cite{chrome-new-feature}, which limits background activity and visual effects (\eg animations and videos) as soon as the battery of the device reaches 20\%. Similarly, the aforementioned battery saving mode for the Opera browser can be configured to turn on automatically when the device is removed from the power station and, when unused, will send a reminder once the battery reaches 20\% that the mode is available \cite{opera-battery-saver}.
+Chrome has introduced a new feature called Energy Saver \cite{chrome_new_feature}, which limits background activity and visual effects (\eg animations and videos) as soon as the battery of the device reaches 20\%. Similarly, the aforementioned battery saving mode for the Opera browser can be configured to turn on automatically when the device is removed from the power station and, when unused, will send a reminder once the battery reaches 20\% that the mode is available \cite{opera-battery-saver}.
 
 % --------------------------------------------------------------------
 \subsection{Reduce Size} \label{sec:patterns-ReduceSize}
@@ -254,7 +254,7 @@ Not only can the data itself be compressed, but the request as a whole can be fu
 \textbf{Discussion:} One concern when executing operations separately on mobile phones is tail energy consumption~\cite{cruz2019catalog}. When batching multiple tasks, tail energy consumption can be optimized since an active state can be maintained until all tasks are done and do not need to be re-activated for each operation individually. Background tasks, such as managing cellular connection, can be expensive but do not necessarily have to be executed in a specific time. Cruz \etal proposed to use Job scheduling APIs (\eg \texttt{android.app.job.JobScheduler}) for managing multiple background tasks occurring in a device. Job scheduling is also available for web applications. One example is the Google Cloud Scheduler API \cite{Google-cloude-scheduler-api}, which allows the scheduling of multiple tasks by use of cron jobs.
 
 For web application development, there exist batch processing frameworks \eg batch processing framework in Java EE \cite{javaee-batch-processing}. This framework executes tasks periodically or when resource usage is low.
-Common use cases for batch processing include billing, report generation, data format conversion, and image processing. Developers can even be mindful of batch operations during frontend development: when using the REST API, it is possible to make use of the batch mode, which allows the bundling of multiple individual requests into one larger request \cite{rest-api-batch-example} \cite{microsoft-batch-operations}.
+Common use cases for batch processing include billing, report generation, data format conversion, and image processing. Developers can even be mindful of batch operations during frontend development: when using the REST API, it is possible to make use of the batch mode, which allows the bundling of multiple individual requests into one larger request \cite{rest-api-batch-example} \cite{MicrosoftAPI}.
 
 
 % --------------------------------------------------------------------
@@ -320,7 +320,7 @@ Common use cases for batch processing include billing, report generation, data f
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{RQ1/Img/Raidbots.jpg}
-    \caption{Website showing the number of all possible combinations of the gear selected by the user \cite{raider-iO-website}.}
+    \caption{Website showing the number of all possible combinations of the gear selected by the user \cite{raider_iO_website}.}
     \label{fig:raidbots}
 \end{figure}
 
@@ -362,7 +362,7 @@ Another idea of applying this pattern to web applications could be to store, for
 
 
 \textbf{Discussion:} The main concern for this pattern in mobile phones is the battery level of the device~\cite{cruz2019catalog}. In web applications, energy-intensive operations typically happen in the backend. This does not impact the energy consumption of the system through which the end user is accessing the web page. 
-However, timeouts are already being used in web applications. One frequent use case is associated with a WebDriver session. Here, various timeouts control behaviors for script injection, document navigation, and element retrieval \cite{dev-mozilla-timeouts}.  Additionally, it is conceivable for developers to inform users about computation-heavy operations (see Discussion in \ref{sec:patterns-InformUsers}). In HCI, ten usability heuristics by Nielsen exist \cite{nielsen-ten-usability-heuristics}. One of which addresses user control and freedom. This heuristic states that it should always be possible for users to exit the current interaction with, for example, a cancel button. By following this suggestion, developers can ensure that any kind of interaction or task can be interrupted. Therefore, providing a means of interrupting especially energy-greedy operations would follow the usability heuristics by Nielsen.
+However, timeouts are already being used in web applications. One frequent use case is associated with a WebDriver session. Here, various timeouts control behaviors for script injection, document navigation, and element retrieval \cite{dev-mozilla-timeouts}.  Additionally, it is conceivable for developers to inform users about computation-heavy operations (see Discussion in \ref{sec:patterns-InformUsers}). In HCI, ten usability heuristics by Nielsen exist \cite{nielsen1995ten}. One of which addresses user control and freedom. This heuristic states that it should always be possible for users to exit the current interaction with, for example, a cancel button. By following this suggestion, developers can ensure that any kind of interaction or task can be interrupted. Therefore, providing a means of interrupting especially energy-greedy operations would follow the usability heuristics by Nielsen.
 
 
 % --------------------------------------------------------------------
