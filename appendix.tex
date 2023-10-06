@@ -1,17 +1,41 @@
 % !TEX root = main.tex
 \section{\texorpdfstring{$RQ_1$}: Adaptation of \EPS} 
-%\input{Listings/avoidExtraWork}
-
-%\input{Listings/batchoperations}
-%\input{Listings/cache}
-%\input{Listings/suprpressLog}
-%\input{Listings/reduceSize}
-%\input{Listings/dynamicRetyrDelay}
-%\input{Listings/openWhenNeccessary}
-%\input{Listings/pushOverPoll}
-%\input{Listings/killAbnormalTask}
 
 For each pattern, we provide the original definition given by Cruz \etal, the adapted context for web applications, a solution, and an example \cite{cruz2019catalog}. The discussion part of each section can provide comparisons between mobile and web applications, examples, and research from other domains for that pattern. If the pattern only applies to a certain extent or in certain situations, the discussion aims to present the reasons and explanations.
+
+\begin{table*}[tbh]
+\footnotesize
+	\begin{center}
+		\caption{ Mobile \eps by Cruz \etal \cite{cruz2019catalog} with their description }
+		\label{tab:patterns_description}
+		\begin{tabular}{p{0.17\linewidth}p{0.77\linewidth}}
+  \toprule
+  			\textbf{Pattern} & \textbf{Description}\\\midrule
+\darkui                           & Provide a dark UI color theme to save battery on devices with AMOLED screens.                                                                          \\
+\dynretdel                      & Whenever an attempt to access a resource fails, increase the time interval before retrying to access the same resource.                                 \\
+\avoidextrawork                   & Avoid performing tasks that are either not visible, do not have a direct impact on the user experience to the user or quickly become obsolete.         \\
+\raceidle                            & Release resources or services as soon as possible (such as wake locks, screen).                                                                        \\
+\openwneccesary                 & Open/start resources/services only when they are strictly necessary.                                                                                   \\
+\pushpoll                          & Use push notifications to receive updates from resources, instead of actively querying resources (i.e., polling).                                      \\
+\powersave                          & Provide an energy efficient mode in which user experience can drop for the sake of better energy usage.                                                \\
+\poweraware                          & Have a different behavior when the device is connected/disconnected to a power station or has different battery levels.                                \\
+\reducesize                              & When transmitting data, reduce its size as much as possible.                                                                                           \\
+\wificell                      & Delay or disable heavy data connections until the device is connected to a WiFi network.                                                               \\
+\suplog                           & Avoid using intensive logging.                                                                                                                         \\
+\batchoper                         & Batch multiple operations instead of putting the device into an active state many times.                                                              \\
+\cache                                   & Avoid performing unnecessary operations by using cache mechanisms.                                                                                     \\
+\decreaserate                            & Increase time between syncs/sensor reads as much as possible.                                                                                          \\
+\usrknowbest                         & Allow users to enable/disable certain features in order to save energy.                                                                                \\
+\informusr                             & Let the user know if the app is doing any battery-intensive operations.                                                                                \\
+\enoresolution                        & Collect or provide high-accuracy data only when strictly necessary.                                                                                    \\
+\sensorfusion                            & Use data from low-power sensors to infer whether new data needs to be collected from high-power sensors.                                               \\
+\killtask                     & Provide means of interrupting energy greedy operations (e.g., using timeouts or user input).                                                         \\
+\noscrinteraction                    & Whenever possible, allow interaction without using the display.                                                                                         \\
+\avoidgraphic & Graphics and animations are really important to improve the user experience. However, they can also be battery intensive ? use them with moderation.   \\
+\mansyncod                 & Perform tasks exclusively when requested by the user.                                                                                                  \\ \hline
+\end{tabular}
+\end{center}
+\end{table*}
 
 % --------------------------------------------------------------------
 \subsection{Dark UI Colors}\label{sec:patterns-DarkUIColors}
@@ -23,18 +47,18 @@ For each pattern, we provide the original definition given by Cruz \etal, the ad
 
 \textbf{Solution:} Provide a UI with dark background colors.
 
-\textbf{Example:} There already exist websites that provide dark UI colors like wand.ai (see Figure \ref{fig:wandb}).
+\textbf{Example:} There already exist websites that provide dark UI colors like wand.ai (see Figure \ref{fig:wandb} \footnote{\url{https://wandb.ai/site}}).
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{RQ1/Img/wandbAI.png}
-    \caption{Screenshot of a website with dark UI colors \cite{website-wandb}.}
+    \caption{Screenshot of a website with dark UI colors.}
     \label{fig:wandb}
 \end{figure}
 
 
 \textbf{Discussion:} In mobile devices, the display alongside the GSM module are the two components with the highest power consumption ~\cite{Carroll2010}. Providing a dark UI color theme on devices with OLED (Organic Light Emitting Diodes) screens has been shown to reduce the display's power consumption up to 83\%, which can translate into a 69\% total phone power reduction~\cite{Dash2021}. This indicates that switching from light to dark mode saves a significant amount of battery.
 
-The percentage of global web traffic recorded on mobile phones has increased drastically over the past decade. In February 2023, 60.67\% of all web traffic came through mobile phones \cite{statista-website-traffic-from-mobile-devices}. Therefore, we expect similar benefits to battery life when accessing a web page with dark UI colors from a smartphone. To our knowledge, no research exists on energy consumption reduction of dark UI colors in non-battery-powered devices. We assume that depending on the monitor type used to display the web pages - namely, the newly emerging OLED monitors - there will be a reduction of energy consumption. Generally, we see dark UI colors catching on in web applications with motivations not only restricted to reducing power consumption: they range from adjusting brightness to current lighting conditions and improved display readability in dark environments~\cite{Mantiuk2009}~\cite{Rempel2012}, to having beneficial impact on users with reduced vision in certain circumstances~\cite{Bangor1999} and of course reduce power consumption on battery-powered devices~\cite{Dong2009}. Given this pattern's various benefits, it would be interesting to survey users to gather other possible benefits.
+The percentage of global web traffic recorded on mobile phones has increased drastically over the past decade. In February 2023, 60.67\% of all web traffic came through mobile phones \cite{statista}. Therefore, we expect similar benefits to battery life when accessing a web page with dark UI colors from a smartphone. To our knowledge, no research exists on energy consumption reduction of dark UI colors in non-battery-powered devices. We assume that depending on the monitor type used to display the web pages - namely, the newly emerging OLED monitors - there will be a reduction of energy consumption. Generally, we see dark UI colors catching on in web applications with motivations not only restricted to reducing power consumption: they range from adjusting brightness to current lighting conditions and improved display readability in dark environments~\cite{Mantiuk2009}~\cite{Rempel2012}, to having beneficial impact on users with reduced vision in certain circumstances~\cite{Bangor1999} and of course reduce power consumption on battery-powered devices~\cite{Dong2009}. Given this pattern's various benefits, it would be interesting to survey users to gather other possible benefits.
 
 % --------------------------------------------------------------------
 \subsection{Dynamic Retry Delay}\label{sec:patterns-DynamicRetryDelay}
@@ -67,9 +91,9 @@ when streaming videos or video conferencing \cite{latency-video}. This implies t
 
 \textbf{Solution:} Investigate the relevant set of data to be presented to the user in each use case. Enable/disable updates and processing tasks depending on their effect on the visible or valuable data to the user.
 
-\textbf{Example:} Consider the code snippet in \autoref{AvoidExtraneousWorkCode}. It shows an example where a website pauses audio when the user switches to a different tab and plays when they switch back. In this case, no unnecessary energy consumption will occur when the user is not interacting with the page.
+\textbf{Example:} Consider the code snippet in \autoref{AvoidExtraenousWorkCode}. It shows an example where a website pauses audio when the user switches to a different tab and plays when they switch back. In this case, no unnecessary energy consumption will occur when the user is not interacting with the page.
 
-\textbf{Discussion:} For web applications, for example, there exists the Page Visibility API \cite{dev-mozilla-page-visibility-api}. When the user switches to another tab or minimizes the window, this API sends an event to let listeners know that the state of the page has changed. This is especially useful for improving performance and also saving resources by not letting a page perform unnecessary tasks when the document isn't visible. See also the discussions in \ref{sec:patterns-OpenOnlyWhenNecessary} Open Only When Necessary and in \ref{sec:patterns-RaceToIdle} Race-to-idle.
+\textbf{Discussion:} For web applications, for example, there exists the Page Visibility API \cite{MozillaAPI}. When the user switches to another tab or minimizes the window, this API sends an event to let listeners know that the state of the page has changed. This is especially useful for improving performance and also saving resources by not letting a page perform unnecessary tasks when the document isn't visible. See also the discussions in \ref{sec:patterns-OpenOnlyWhenNecessary} Open Only When Necessary and in \ref{sec:patterns-RaceToIdle} Race-to-idle.
 
 In the context of web applications, its data, in the form of content, does not necessarily become as 'quickly obsolete' as in mobile applications. For example, recommendations based on location \eg for restaurants or for ATMs, will change if the user is on the move. Therefore, the location data from a couple of minutes ago can become obsolete. If we implement a mobile application, we expect the user to be on the move frequently. But if we implement a web application, we can not generally expect this behavior. Therefore, we recommend setting the focus of this pattern in web applications on tasks that are either not visible or do not directly impact the user experience.
 
@@ -85,7 +109,7 @@ In the context of web applications, its data, in the form of content, does not n
 
 \textbf{Solution:} Release unnecessary resources and services. This includes releasing the hardware resources that are no longer used (\eg camera after a video call) and applying resource management patterns (\eg garbage collection) during software development.
 
-\textbf{Example:} Soundcloud uses React Redux in their techstack, which includes the functionality of garbage collection \cite{redux-garbage-collection}.
+\textbf{Example:} Soundcloud uses React Redux in their techstack, which includes the functionality of garbage collection \cite{Garbagecollect}.
 
 \textbf{Discussion:} There exist a number of resource management patterns in software development. For instance, Resource manager patterns \cite{design-pattern-resource-manager} for embedded and real-time systems utilize lists to keep track of free and busy resources to figure out how to allocate and free up resources in the system. Another common pattern is the dispose pattern \cite{wikipedia_dispose_pattern}, which is used across many object-oriented programming languages. Here, resources held by objects are released by calling methods like close(), release(), etc. This pattern is primarily used in those languages whose runtime environment have automatic garbage collection, such as C\# and Java. Other patterns regarding releasing resources include the \emph{Leasing pattern} and the \emph{Evictor pattern} \cite{resource-manager-patterns}.
 For web application development, resource management patterns can be used in both front- and backend. According to intellipaat.com \cite{best-web-dev-languages}, the 4 most popular languages for backend development in web applications are Python, php, Java, and C\#, all of which support garbage collection. The most used language for the frontend is JavaScript along with its frameworks including Angular, React, and VueJS. JavaScript also supports garbage collection as a form of memory management \cite{dev-mozilla-memory-management}.
@@ -94,7 +118,7 @@ Browsers can promote similar behavior in websites themselves. WebKit \cite{webki
 \begin{itemize}
     \item window.requestAnimationFrame() is stopped,
     \item CSS and SVG Animations are halted,
-    \item Timers are suspended \cite{webkit-blog}.
+    \item Timers are suspended \footnote{\url{https://webkit.org/blog/8970/how-web-content-can-affect-power-usage/}}.
 \end{itemize}
 
 
@@ -368,7 +392,7 @@ However, timeouts are already being used in web applications. One frequent use c
 
 \textbf{Solution:} Observe the importance of graphics and animations on the user experience. Avoid using graphics animations or high-quality graphics. If necessary, resort to low frame rates and/or low resolution.
 
-\textbf{Example:} Figure \ref{fig:portal_energieflüsse} shows an example of a website, that uses simple, non-animated graphics to improve the user experience.
+\textbf{Example:} The company has an example of a website, that uses simple, non-animated graphics to improve the user experience.
 
  
 \begin{comment}
@@ -406,8 +430,8 @@ However, timeouts are already being used in web applications. One frequent use c
 
 \section{\texorpdfstring{$RQ_3$}: Impact of \EPS} 
 
-\input{RQ3/Img/rq3-DRR-cumulative-IA-eng}
-\input{RQ3/Img/rq3-lazyload-cumulative-IA-eng}
+%\input{RQ3/Img/rq3-DRR-cumulative-IA-eng}
+%\input{RQ3/Img/rq3-lazyload-cumulative-IA-eng}
 
-\input{RQ3/Img/rq3-DRR-package-DRAM-eng}
-\input{RQ3/Img/rq3-lazyload-package-DRAM-eng}
+%\input{RQ3/Img/rq3-DRR-package-DRAM-eng}
+%\input{RQ3/Img/rq3-lazyload-package-DRAM-eng}
