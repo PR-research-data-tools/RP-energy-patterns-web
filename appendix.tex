@@ -71,7 +71,12 @@ The percentage of global web traffic recorded on mobile phones has increased dra
 
 \textbf{Example:} Consider a web application that displays a news feed. The frontend relies on the backend to provide updates. In case the frontend can not reach the backend, it can either continuously send requests to the backend or can increase the time between attempts using some sort of heuristic (\eg linear or exponential growth).  Listing \ref{dynamicretrydelaycode} shows an implementation utilizing the Fibonacci series to delay the retry attempts.
 
-\input{RQ1/Listings/dynamicRetyrDelay.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Example heuristics using the fibonacci series \cite{github-retry-demo}},label={dynamicretrydelaycode}]
+    val retryStrategy =
+    RetryStrategy.fibonacciBackOff(initialWaitDuration = 3.seconds, maxAttempts = 5)
+    \end{lstlisting}
+\end{minipage}
 
 \textbf{Discussion:} Research concerning the impact of energy consumption in connection with (re-)accessing resources is being conducted in different subdomains of computer science already. For example, in Wireless Sensor Networks (WSN), energy consumption is one of the main design constraints alongside scalability, delay, traffic adaptation, throughput, and overheads. Therefore, an efficient Medium Access Control (MAC) protocol is required~\cite{Kaur2016}. Cho \etal proposed a back-off algorithm for MAC protocols in WSN that uses a dynamic contention period based on the remaining energy (\ie battery level) of each sensor node~\cite{Cho2006}. They showed that this algorithm saves more power and prolongs the lifetime of sensor nodes compared to conventional back-off algorithms. We assume that using this and similar back-off algorithms would also decrease power consumption in other contexts, not only in wireless sensor networks.
 
@@ -96,7 +101,24 @@ when streaming videos or video conferencing \cite{latency-video}. This implies t
 
 In the context of web applications, its data, in the form of content, does not necessarily become as 'quickly obsolete' as in mobile applications. For example, recommendations based on location \eg for restaurants or for ATMs, will change if the user is on the move. Therefore, the location data from a couple of minutes ago can become obsolete. If we implement a mobile application, we expect the user to be on the move frequently. But if we implement a web application, we can not generally expect this behavior. Therefore, we recommend setting the focus of this pattern in web applications on tasks that are either not visible or do not directly impact the user experience.
 
-\input{RQ1/Listings/avoidExtraWork.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Code snippet from Mozilla API that handles page visibility change \cite{MozillaAPI}},
+     label={AvoidExtraenousWorkCode}]
+    const audio = document.querySelector("audio");
+    
+    // Handle page visibility change:
+    // - If the page is hidden, pause the video
+    // - If the page is shown, play the video
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+    });
+    \end{lstlisting}
+\end{minipage}
+
 
 % --------------------------------------------------------------------
 \subsection{Race-to-idle}\label{sec:patterns-RaceToIdle}
@@ -143,7 +165,36 @@ img src=``image.png'' loading=``lazy'' alt=``...'' width=``200'' height=``200''
 
 In frontend development, there exists a widely used pattern called lazy loading. It allows for identifying non-critical resources and loading them only when necessary, avoiding unnecessary energy consumption. In addition, Tuaycharoen \etal show that lazy loading can increase the performance of web applications by 50\% due to an improved response time~\cite{Tuaycharoen2018}. The web application can use lazy loading in different scenarios and places. One typical use case happens during user interactions, such as scrolling and navigating.
 
-\input{RQ1/Listings/openWhenNeccessary.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Accessing the camera only when actually capturing the image - not earlier \cite{github-vue-cam-demo}}, label={OpenOnlyWhenNecessaryCode}]
+<template>
+    ...
+    <div  class="camera-icon" @click="captureImage">
+        <i class="big camera icon" ></i>
+        <p>Take Picture</p>
+    </div>
+    ...
+</template>
+
+<script>
+    ...
+    methods: {
+        captureImage() {
+            const mediaStreamTrack = this.mediaStream.getVideoTracks()[0]
+            const imageCapture = new window.ImageCapture(mediaStreamTrack)
+            let reader = new FileReader();
+            return imageCapture.takePhoto().then(blob => {
+                reader.readAsDataURL(blob)
+                reader.onload = () => {
+                    this.imageData.image = reader.result;
+                }
+            })  
+        }
+    }
+    ...
+    <\script>
+    \end{lstlisting}
+\end{minipage}
 
 % --------------------------------------------------------------------
 \subsection{Push over Poll} \label{sec:patterns-PushOverPoll}
@@ -157,7 +208,23 @@ In frontend development, there exists a widely used pattern called lazy loading.
 
 \textbf{Example:} Incorporate push notifications into the web application where possible. Listing \ref{pushoverpollcode} shows a possible implementation of such a push notification.
 
-\input{RQ1/Listings/pushOverPoll.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Code snippet of a push notification implementation.}, label={pushoverpollcode}]
+public async Task SendNotificationAsync(PushSubscription subscription, 
+    PushMessage message, CancellationToken cancellationToken)
+{
+    try
+    {
+        await _pushClient.RequestPushMessageDeliveryAsync(subscription, message, 
+        cancellationToken);
+    }
+    catch (Exception ex)
+    {
+        await HandlePushMessageDeliveryExceptionAsync(ex, subscription);
+    }
+}
+    \end{lstlisting}
+\end{minipage}
 
 \textbf{Discussion:} To avoid sending requests that will return no update in order to reduce unnecessary energy consumption is relevant for mobile applications since users rely on batteries. Ayala \etal found that using the polling mechanism consumes up to 10\% more energy than using long polling and up to 7.5\%  more energy for WebSocket in Android phones~\cite{Ayala2019}. When users access a web page from a mobile device, we would expect similar findings. To our knowledge, there exists no research about energy reduction comparing pulling and polling for non-mobile devices.
 
@@ -219,7 +286,30 @@ Chrome has introduced a new feature called Energy Saver \cite{chrome_new_feature
 
 Not only can the data itself be compressed, but the request as a whole can be further optimized. Tools commonly used to make HTTP requests in web applications include XMLHttpRequest (XHR), Jquery Ajax, Fetch, Axios and Angular HttpClient \cite{Angular_Http_Client}. Using these packages allows developers to edit and adapt the requests being sent in their application, which allows, for example, the removal of unnecessary headers.
 
-\input{RQ1/Listings/reduceSize.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Impelemtation of data compression on strings larger than 1KB \cite{reduceSizeExample}
+    }, label={reducesizecode}]
+import axios from 'axios';
+import pako from 'pako';
+
+const api = axios.create({
+  baseURL: "http://localhost:9000/api",
+  withCredentials: true,
+  transformRequest: axios.defaults.transformRequest.concat(
+    function (data, headers) {
+      // compress strings if over 1KB
+      if (typeof data === 'string' && data.length > 1024) {
+        headers['Content-Encoding'] = 'gzip';
+        return pako.gzip(data);
+      } else {
+        headers['Content-Encoding'] = undefined;
+        return data;
+      }
+    }
+  )
+});
+    \end{lstlisting}
+\end{minipage}
 
 % --------------------------------------------------------------------
 \subsection{Suppress Logs} \label{sec:patterns-SuppressLogs}
@@ -233,7 +323,20 @@ Not only can the data itself be compressed, but the request as a whole can be fu
 
 \textbf{Example:} The console output in Listing \ref{suppresslogscode} shows an example of possible logs. The logging level is \textit{warning}. This logging level includes warnings, errors, and critical system failures.
 
-\input{RQ1/Listings/suprpressLog.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Console log of an interaction with a web application on log level warning. Other logging levels include warnings, errors, and critical system failures.}, label={suppresslogscode}]
+# loglevel = warning
+
+backend  | 2023-07-19 13:48:56,133 model_factory Response to request with pk 1234-5678-abcd 
+    has content type text/javascript but was unable to parse it
+
+backend  | 2023-07-19 13:49:02,343 model_factory Response to request with pk abcd-1234-5678 
+    has content type text/javascript but was unable to parse it
+
+backend  | 2023-07-19 13:49:12,876 model_factory Response to request with pk 1234-abcd-5678 
+    has content type text/javascript but was unable to parse it
+    \end{lstlisting}
+\end{minipage}
 
 \textbf{Discussion:} Shaiful \etal found, that execution logs for debugging can influence energy consumption in Android applications~\cite{Shaiful2018}. They show that the generation of logs at rates of one message per second or more negatively impacts energy consumption. Logging is one of the basic functionalities of most web applications. It records valuable information for operating and maintaining the website, such as the running information, user operations, debugging, warnings, and error information of the application~\cite{Pan2022}. To our knowledge, no study exists on the energy impact of logging in web applications. However, we assume, that extensive logging can also impact power consumption in web applications. Further, web applications are usually deployed in production mode, which by design does not support debugging. Therefore, the number of debugging logs in deployed websites will be zero. Thus eliminating the possibility of higher energy consumption caused by debugging logs. However, there are still logs available in production mode. There exist different logging levels: critical, error, warning, info, and debug are among the most common ones \cite{python-docs-logging}. The impact of continuously logging for different purposes on the server side or in source code is yet to be investigated.
 
@@ -249,7 +352,55 @@ Not only can the data itself be compressed, but the request as a whole can be fu
 
 \textbf{Example:} Use Job Scheduling APIs for managing multiple tasks.
 
-\input{RQ1/Listings/batchoperations.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Usage of job scheduling in implementation to be able to batch operations \cite{MicrosoftAPI}}, label={BatchOperationsCode}]
+def start_process():
+    _create_and_return_bills()
+
+    some_job = django_rq.enqueue(_setup, jobs,
+                                job_timeout=7200)
+    bill_jobs = []
+
+    # Generate bills using workers.
+    for bill in list_of_bills:
+        bill_jobs.append(
+            django_rq.enqueue(_generate_bill, bill, 
+                                some_job.id,
+                                depends_on=some_job))
+                              
+    # Bills for user are calculated concurrently
+    bill_jobs.append(django_rq.enqueue(
+        set_total_costs_for_billing, 
+        all_bills, depends_on=bill_jobs))
+    django_rq.enqueue(concat_files, all_bills, 
+        depends_on=bill_jobs)
+    ...
+\end{lstlisting}
+\end{minipage}
+
+\begin{comment}
+\begin{minipage}{\linewidth}
+    \begin{lstlisting}[caption={Example implementation showing the usage of Redis job scheduling in order to batch billing calculations.}, label={BatchOperationsCode}]
+def start_billing_process():
+    ...
+    rate_calculation_job = django_redis_queue.enqueue(_setup, billing_run, 
+                                                      job_timeout=7200)
+    list_of_jobs = []
+
+    # Generate bills using Redis workers.
+    for bill in list_of_bills:
+        list_of_jobs.append(
+            django_redis_queue.enqueue(_generate_bill, bill_for_user,
+                                        rate_calculation_job.id,
+                                        depends_on=rate_calculation_job))
+                              
+    
+    # Concatenate all individual bills.
+    django_redis_queue.enqueue(concat_files, all_bills, depends_on=list_of_jobs)
+    ...
+\end{lstlisting}
+\end{minipage}
+\end{comment}
 
 \textbf{Discussion:} One concern when executing operations separately on mobile phones is tail energy consumption~\cite{cruz2019catalog}. When batching multiple tasks, tail energy consumption can be optimized since an active state can be maintained until all tasks are done and do not need to be re-activated for each operation individually. Background tasks, such as managing cellular connection, can be expensive but do not necessarily have to be executed in a specific time. Cruz \etal proposed to use Job scheduling APIs (\eg \texttt{android.app.job.JobScheduler}) for managing multiple background tasks occurring in a device. Job scheduling is also available for web applications. One example is the Google Cloud Scheduler API \cite{Google-cloude-scheduler-api}, which allows the scheduling of multiple tasks by use of cron jobs.
 
@@ -269,7 +420,16 @@ Common use cases for batch processing include billing, report generation, data f
 
 \textbf{Example:} Utilize local storage provided by the browser to avoid collecting the same data repeatedly. Listing \ref{cachecode} shows a code example for the frontend on how to cache an API response in the local storage.
 
-\input{RQ1/Listings/cache.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Code snippet of a push notification implementation \cite{CacheExample}.},
+    label={cachecode}]
+let data = localStorage.getItem('data')
+axios.get('/data').then((response) => {
+  data = response.data.data
+  localStorage.setItem('data', response.data.data)
+})}
+\end{lstlisting}
+\end{minipage}
 
 \textbf{Discussion:} Web caching is a well-known strategy that stores popular web objects that are likely to be visited in the near future in positions close to the user. Thus, web caching helps reduce network traffic. This mechanism can be implemented at three different levels: client level (browser cache), proxy level (proxy server cache), and original server level (cache server)~\cite{Ali2011}. Browser caching is located on the client side. Modern web browsers provide cache mechanisms, which are especially useful when a user wants to return to a page they have recently looked at. Proxy server cache is similar to browser caching but works on a much larger scale. When a request arrives at the proxy server, it checks its cache. If the desired object is available, the proxy sends the object to the client. If the object has expired or is unavailable, the proxy server sends a request to the original server and passes that response to the client. This object will also be stored from the proxy in its own cache for future requests. The last level on which caching mechanisms are commonly implemented is on the original server. This server-side caching aims to reduce the need for redundant computations or database retrievals~\cite{Ali2011}. Traditional methodologies for implementing web caching are based on time and size. They do not consider the events that will possibly happen in the future. Pernabas \etal propose to improve the performance of web proxy caching by adapting the Data Mining Classifier model based on Web User clustering and Weighted Random Indexing Methods~\cite{Pernabas2019}.
 
@@ -358,7 +518,12 @@ Another idea of applying this pattern to web applications could be to store, for
 
 \textbf{Example:} Implementation of a timeout can be seen in Listing \ref{killabnormaltaskscode}. Here, a timeout has been set to manage the calculation of different values needed to create a bill. If something goes wrong during the calculations, the timeout ensures that the abnormal behavior gets interrupted and that the resource (in this case, a worker) will be freed up again.
 
-\input{RQ1/Listings/killAbnormalTask.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Example of a timeout.},label={killabnormaltaskscode}]
+    some_job = django_rq.enqueue(_setup, jobs, 
+            job_timeout=7200, result_ttl=1800)
+    \end{lstlisting}
+\end{minipage}
 
 
 \textbf{Discussion:} The main concern for this pattern in mobile phones is the battery level of the device~\cite{cruz2019catalog}. In web applications, energy-intensive operations typically happen in the backend. This does not impact the energy consumption of the system through which the end user is accessing the web page. 
@@ -418,13 +583,28 @@ However, timeouts are already being used in web applications. One frequent use c
 
 \textbf{Example:} The company perform actual calculations for a bill only when the user has requested it by clicking a button. They do not do operation-intensive pre-calculations on loading in case no bill was requested.
 
-\input{RQ1/Listings/manualsync.tex}
+\begin{minipage}{0.95\linewidth}
+    \begin{lstlisting}[caption={Implementation of a button which starts the billing process only when pressed.},label={manualsynchondemandcode}]
+  <template #button-bar>
+  <el-button
+    type="primary"
+    size="large"
+    :loading="isBillingProcessRunning"
+    @click="StartBillingCalculations"
+  >
+    {{ $t('page.component.button.startBillingCalculations') }}
+  </el-button>
+  </template>
+  \end{lstlisting}
+  \end{minipage}
 
 \textbf{Discussion:} Energy-intensive tasks (in the backend) do not influence the battery of the device that is visiting the website. One of the most frequently performed operations in the frontend is fetching data \ie sending requests. These requests can indeed trigger energy-intensive tasks in the backend. Shneidermans eight golden rules of interface design state, that an application should support the (users) internal locus of control \cite{shneidermans-eight-golden-rules}. This means that users need to have control and freedom so that they can feel that they are in control of the system themselves.
 
 
 
 \section{\texorpdfstring{$RQ_2$}: Industry Insights on \EPS} 
+We provide the guidelines in the supplement material. The guidelines are inferred from the questions asked to developers and their responses. 
+We have also provided our coded answers
 We applied thematic analysis to developer excerpts to identify the rationale behind their concerns for \eps as shown in \autoref{fig:rq2-results-eng-patterns-motivation} and \autoref{tab:eng-patterns-motivation}.
 
 \begin{figure}[ht]
@@ -454,7 +634,8 @@ P6 (somewhat concerned) &
 \end{table*}
 
 
-\section{\texorpdfstring{$RQ_3$}: Impact of \EPS} 
+\section{\texorpdfstring{$RQ_3$}: Impact of \EPS}
+The supplement material contains the data that help simulate the two energy patterns, i.e., Dynamic Retry Delay and Open Only When Necessary.
 
 %\input{RQ3/Img/rq3-DRR-cumulative-IA-eng}
 %\input{RQ3/Img/rq3-lazyload-cumulative-IA-eng}

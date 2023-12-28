@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{34}
+\begin{thebibliography}{60}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -37,431 +37,526 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[lat([n.\,d.])]%
-        {latency-video}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock
+\bibitem[gam(2023)]%
+        {gaming_latency}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{}.
 \newblock
 \urldef\tempurl%
-\url{{https://www.haivision.com/glossary/video-latency/}}
+\url{https://www.centurylink.com/home/help/internet/how-to-improve-gaming-latency.html#:~:text=The%20difference%20between%20high%20and%20low%20latency,-Latency%20is%20the&text=Generally%2C%20an%20acceptable%20latency%20(or,a%20noticeable%20lag%20in%20gaming.}
 \showURL{%
-\tempurl}
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[web(2023a)]%
+        {website_latency}
+ \bibinfo{year}{2023}\natexlab{a}.
+\newblock \bibinfo{booktitle}{}.
 \newblock
-\shownote{Last accessed Sep 2023}.
+\urldef\tempurl%
+\url{https://sematext.com/blog/what-is-latency/\#:~:text=In\%20general\%2C\%20however\%2C\%20it's\%20considered,load\%20in\%20under\%203\%20seconds}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[eth([n.\,d.])]%
+\bibitem[lat(2023)]%
+        {latency-video}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{}.
+\newblock
+\urldef\tempurl%
+\url{https://www.haivision.com/glossary/video-latency/}
+\showURL{%
+Retrieved on Aug 2023 from \tempurl}
+
+
+\bibitem[res(2023)]%
+        {resource_manager_patterns}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{}.
+\newblock
+\urldef\tempurl%
+\url{https://www.oreilly.com/library/view/pattern-oriented-software-architecture/9780470845257/14_c004.html}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[dev(2023a)]%
+        {dev_mozilla_memory_management}
+ \bibinfo{year}{2023}\natexlab{a}.
+\newblock \bibinfo{booktitle}{}.
+\newblock
+\urldef\tempurl%
+\url{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management?retiredLocale=de}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[dat(2023)]%
+        {data_transmission_of_data_centers}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{}.
+\newblock
+\urldef\tempurl%
+\url{https://www.iea.org/reports/data-centres-and-data-transmission-networks}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[eth(2023)]%
         {ethernet-vs-wifi}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Android Authority}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Android Authority}}.
 \newblock
 \urldef\tempurl%
 \url{{https://www.androidauthority.com/ethernet-vs-wifi-1105145/}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[Voi([n.\,d.])]%
-        {VoiceOver-Apple}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Apple}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://www.apple.com/accessibility/vision/}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
-
-
-\bibitem[boo([n.\,d.])]%
-        {boohoo-website}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{boohoo}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://www.boohoo.com/page/sustainability-guide.html}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
-
-
-\bibitem[shn([n.\,d.])]%
+\bibitem[shn(2023)]%
         {shneidermans-eight-golden-rules}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Capian}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Capian}}.
 \newblock
 \urldef\tempurl%
 \url{{https://capian.co/shneiderman-eight-golden-rules-interface-design}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[blo([n.\,d.])]%
+\bibitem[blo(2023)]%
         {blog-web-push-notifications}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Digital Marketer}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://www.digitalmarketer.com/blog/use-web-push-notifications/}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
-
-
-\bibitem[des([n.\,d.])]%
-        {design-pattern-resource-manager}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{eventhelix}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Digital Marketer}}.
 \newblock
 \urldef\tempurl%
-\url{{https://www.eventhelix.com/design-patterns/resource-manager/}}
+\url{https://www.digitalmarketer.com/blog/use-web-push-notifications/}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[JAW([n.\,d.])]%
-        {JAWS}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Freedom Scientific}.
-\newblock
+\bibitem[wik(2023)]%
+        {wikipedia_dispose_pattern}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Dispose Pattern}}.
 \newblock
 \urldef\tempurl%
-\url{{https://www.freedomscientific.com/Products/software/JAWS/}}
+\url{https://en.wikipedia.org/wiki/Dispose_pattern}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[git([n.\,d.])]%
-        {github-vue-cam-demo}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{GitHub:Vue-cam-demo}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://github.com/jbull328/vue-cam-demo/blob/master/src/components/CameraDisplay.vue}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
-
-
-\bibitem[Goo([n.\,d.])]%
+\bibitem[Goo(2023)]%
         {Google-cloude-scheduler-api}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Google Cloud}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Google Cloud}}.
 \newblock
 \urldef\tempurl%
 \url{{https://cloud.google.com/scheduler/docs/reference/rest}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[ene([n.\,d.])]%
+\bibitem[ene(2023)]%
         {energy-consumption-image-format}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Greenspector}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Greenspector}}.
 \newblock
 \urldef\tempurl%
 \url{{https://greenspector.com/en/which-image-format-to-choose-to-reduce-its-energy-consumption-and-its-environmental-impact/}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[bes([n.\,d.])]%
+\bibitem[bes(2023)]%
         {best-web-dev-languages}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Intellipaat}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Intellipaat}}.
 \newblock
 \urldef\tempurl%
 \url{{https://intellipaat.com/blog/best-web-development-languages/\#1}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[jav([n.\,d.])]%
+\bibitem[jav(2023)]%
         {javaee-batch-processing}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Java EE}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Java EE}}.
 \newblock
 \urldef\tempurl%
 \url{{https://javaee.github.io/tutorial/batch-processing001.html}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[dev([n.\,d.]a)]%
-        {dev-mozilla-page-visibility-api}
- \bibinfo{year}{[n.\,d.]}\natexlab{a}.
-\newblock \bibinfo{title}{Mozilla}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
-
-
-\bibitem[dev([n.\,d.]b)]%
+\bibitem[dev(2023b)]%
         {dev-mozilla-battery-status-api}
- \bibinfo{year}{[n.\,d.]}\natexlab{b}.
-\newblock \bibinfo{title}{Mozilla}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{b}.
+\newblock \bibinfo{booktitle}{\emph{Mozilla}}.
 \newblock
 \urldef\tempurl%
 \url{{https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[dev([n.\,d.]c)]%
+\bibitem[dev(2023c)]%
         {dev-mozilla-timeouts}
- \bibinfo{year}{[n.\,d.]}\natexlab{c}.
-\newblock \bibinfo{title}{Mozilla}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{c}.
+\newblock \bibinfo{booktitle}{\emph{Mozilla}}.
 \newblock
 \urldef\tempurl%
 \url{{https://developer.mozilla.org/en-US/docs/Web/WebDriver/Timeouts}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed May 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[nie([n.\,d.])]%
-        {nielsen-ten-usability-heuristics}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{NN/g Nielsen Normal Group}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://www.nngroup.com/articles/ten-usability-heuristics/}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed May 23}.
-
-
-\bibitem[ope([n.\,d.])]%
+\bibitem[ope(2023)]%
         {opera-battery-saver}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Opera}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Opera}}.
 \newblock
 \urldef\tempurl%
 \url{{https://www.opera.com/features/battery-saver}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[pyt([n.\,d.])]%
+\bibitem[pyt(2023)]%
         {python-docs-logging}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Python}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Python}}.
 \newblock
 \urldef\tempurl%
 \url{{https://docs.python.org/3/library/logging.html#levels}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed July 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[sta([n.\,d.])]%
-        {statista-website-traffic-from-mobile-devices}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Statista}.
+\bibitem[rai(2023)]%
+        {raider_iO_website}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Raider.io}}.
 \newblock
+\urldef\tempurl%
+\url{{https://raider.io/}}
+\showURL{%
+Retrieved on August 23 from \tempurl}
+
+
+\bibitem[sta(2023)]%
+        {statista}
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Statista}}.
 \newblock
 \urldef\tempurl%
 \url{{https://www.statista.com/statistics/277125/share-of-website-traffic-coming-from-mobile-devices/}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed April 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[med([n.\,d.])]%
+\bibitem[med(2023)]%
         {media-streams-api}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{UDN}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{UDN}}.
 \newblock
 \urldef\tempurl%
 \url{{https://udn.realityripple.com/docs/Web/API/Media_Streams_API}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[vue([n.\,d.])]%
+\bibitem[vue(2023)]%
         {vueuse-useBattery}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{VueUse}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{VueUse}}.
 \newblock
 \urldef\tempurl%
 \url{{https://vueuse.org/core/useBattery/}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
-\bibitem[web([n.\,d.]a)]%
-        {website-wandb}
- \bibinfo{year}{[n.\,d.]}\natexlab{a}.
-\newblock \bibinfo{title}{Wand.AI}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://wandb.ai/site}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed February 23}.
-
-
-\bibitem[laz([n.\,d.])]%
-        {lazy-loading-code-example}
- \bibinfo{year}{[n.\,d.]}\natexlab{}.
-\newblock \bibinfo{title}{Web.dev}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://web.dev/browser-level-image-lazy-loading/}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed August 23}.
-
-
-\bibitem[web([n.\,d.]b)]%
+\bibitem[web(2023b)]%
         {webkit-website}
- \bibinfo{year}{[n.\,d.]}\natexlab{b}.
-\newblock \bibinfo{title}{Webkit}.
-\newblock
+ \bibinfo{year}{2023}\natexlab{b}.
+\newblock \bibinfo{booktitle}{\emph{Webkit}}.
 \newblock
 \urldef\tempurl%
 \url{{https://webkit.org/}}
 \showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
-
-
-\bibitem[web([n.\,d.]c)]%
-        {webkit-blog}
- \bibinfo{year}{[n.\,d.]}\natexlab{c}.
-\newblock \bibinfo{title}{Webkit}.
-\newblock
-\newblock
-\urldef\tempurl%
-\url{{https://webkit.org/blog/8970/how-web-content-can-affect-power-usage/}}
-\showURL{%
-\tempurl}
-\newblock
-\shownote{Last accessed March 23}.
+Retrieved on Oct 2023 from \tempurl}
 
 
 \bibitem[Ali et~al\mbox{.}(2011)]%
         {Ali2011}
-\bibfield{author}{\bibinfo{person}{Waleed Ali}, \bibinfo{person}{Siti~Mariyam
-  Shamsuddin}, {and} \bibinfo{person}{Abdul~Samad Ismail}.}
-  \bibinfo{year}{2011}\natexlab{}.
-\newblock \showarticletitle{A Survey of Web Caching and Prefetching A Survey of
-  Web Caching and Prefetching}.
-\newblock \bibinfo{journal}{\emph{International Journal of Advances in Soft
-  Computing and its Applications}}  \bibinfo{volume}{3} (\bibinfo{date}{03}
-  \bibinfo{year}{2011}).
+\bibfield{author}{\bibinfo{person}{Waleed Ali}, \bibinfo{person}{Siti~Mariyam Shamsuddin}, {and} \bibinfo{person}{Abdul~Samad Ismail}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{A Survey of Web Caching and Prefetching A Survey of Web Caching and Prefetching}.
+\newblock \bibinfo{journal}{\emph{International Journal of Advances in Soft Computing and its Applications}}  \bibinfo{volume}{3} (\bibinfo{date}{03} \bibinfo{year}{2011}).
 \newblock
+
+
+\bibitem[Ayala et~al\mbox{.}(2019)]%
+        {Ayala2019}
+\bibfield{author}{\bibinfo{person}{Inmaculada Ayala}, \bibinfo{person}{Mercedes Amor}, \bibinfo{person}{Lidia Fuentes}, {and} \bibinfo{person}{Michele Risi}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{An Energy Efficiency Study of Web-Based Communication in Android Phones}.
+\newblock \bibinfo{journal}{\emph{Sci. Program.}}  \bibinfo{volume}{2019} (\bibinfo{date}{jan} \bibinfo{year}{2019}), \bibinfo{numpages}{19}~pages.
+\newblock
+\showISSN{1058-9244}
+\urldef\tempurl%
+\url{https://doi.org/10.1155/2019/8235458}
+\showDOI{\tempurl}
+
+
+\bibitem[B(2023)]%
+        {wandb}
+\bibfield{author}{\bibinfo{person}{Wand B}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Weights \& Biases}}.
+\newblock
+\urldef\tempurl%
+\url{https://wandb.ai/site}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[Bangor(1999)]%
+        {Bangor1999}
+\bibfield{author}{\bibinfo{person}{Aaron Bangor}.} \bibinfo{year}{1999}\natexlab{}.
+\newblock \showarticletitle{Electronic Text Readability Issues for the Visually Impaired}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the Human Factors and Ergonomics Society Annual Meeting}} \bibinfo{volume}{43}, \bibinfo{number}{23} (\bibinfo{year}{1999}), \bibinfo{pages}{1372--1375}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1177/154193129904302323}
+\showDOI{\tempurl}
+
+
+\bibitem[Barr and Asanovi\'{c}(2006)]%
+        {Barr2006}
+\bibfield{author}{\bibinfo{person}{Kenneth~C. Barr} {and} \bibinfo{person}{Krste Asanovi\'{c}}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Energy-Aware Lossless Data Compression}.
+\newblock \bibinfo{journal}{\emph{ACM Trans. Comput. Syst.}} \bibinfo{volume}{24}, \bibinfo{number}{3} (\bibinfo{date}{aug} \bibinfo{year}{2006}), \bibinfo{pages}{250–291}.
+\newblock
+\showISSN{0734-2071}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1151690.1151692}
+\showDOI{\tempurl}
+
+
+\bibitem[Bull(2020)]%
+        {github-vue-cam-demo}
+\bibfield{author}{\bibinfo{person}{John~T. Bull}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{GitHub:Vue-cam-demo}}.
+\newblock
+\urldef\tempurl%
+\url{{https://github.com/jbull328/vue-cam-demo/blob/master/src/components/CameraDisplay.vue}}
+\showURL{%
+Retrieved on August 23 from \tempurl}
 
 
 \bibitem[Carroll and Heiser(2010)]%
         {Carroll2010}
-\bibfield{author}{\bibinfo{person}{Aaron Carroll} {and} \bibinfo{person}{Gernot
-  Heiser}.} \bibinfo{year}{2010}\natexlab{}.
-\newblock \showarticletitle{An Analysis of Power Consumption in a Smartphone}.
-  In \bibinfo{booktitle}{\emph{Proceedings of the 2010 USENIX Conference on
-  USENIX Annual Technical Conference}} (Boston, MA)
-  \emph{(\bibinfo{series}{USENIXATC'10})}. \bibinfo{publisher}{USENIX
-  Association}, \bibinfo{address}{USA}, \bibinfo{pages}{21}.
+\bibfield{author}{\bibinfo{person}{Aaron Carroll} {and} \bibinfo{person}{Gernot Heiser}.} \bibinfo{year}{2010}\natexlab{}.
+\newblock \showarticletitle{An Analysis of Power Consumption in a Smartphone}. In \bibinfo{booktitle}{\emph{Proceedings of the 2010 USENIX Conference on USENIX Annual Technical Conference}} (Boston, MA) \emph{(\bibinfo{series}{USENIXATC'10})}. \bibinfo{publisher}{USENIX Association}, \bibinfo{address}{USA}, \bibinfo{pages}{21}.
 \newblock
+
+
+\bibitem[Chang(2023)]%
+        {chrome_new_feature}
+\bibfield{author}{\bibinfo{person}{Mark Chang}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Chrome features}}.
+\newblock
+\urldef\tempurl%
+\url{https://blog.google/products/chrome/new-chrome-features-to-save-battery-and-make-browsing-smoother}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
 
 
 \bibitem[Chiasserini and Magli(2002)]%
         {Chiasserini2002}
-\bibfield{author}{\bibinfo{person}{C.-F. Chiasserini} {and} \bibinfo{person}{E.
-  Magli}.} \bibinfo{year}{2002}\natexlab{}.
-\newblock \showarticletitle{Energy consumption and image quality in wireless
-  video-surveillance networks}. In \bibinfo{booktitle}{\emph{The 13th IEEE
-  International Symposium on Personal, Indoor and Mobile Radio
-  Communications}}, Vol.~\bibinfo{volume}{5}. \bibinfo{pages}{2357--2361
-  vol.5}.
+\bibfield{author}{\bibinfo{person}{C.-F. Chiasserini} {and} \bibinfo{person}{E. Magli}.} \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{Energy consumption and image quality in wireless video-surveillance networks}. In \bibinfo{booktitle}{\emph{The 13th IEEE International Symposium on Personal, Indoor and Mobile Radio Communications}}, Vol.~\bibinfo{volume}{5}. \bibinfo{pages}{2357--2361 vol.5}.
 \newblock
 \urldef\tempurl%
 \url{https://doi.org/10.1109/PIMRC.2002.1046566}
 \showDOI{\tempurl}
 
 
+\bibitem[Cho et~al\mbox{.}(2006)]%
+        {Cho2006}
+\bibfield{author}{\bibinfo{person}{Chiwoo Cho}, \bibinfo{person}{Jinsuk Pak}, \bibinfo{person}{Jinnyun Kim}, \bibinfo{person}{Icksoo Lee}, {and} \bibinfo{person}{Kijun Han}.} \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{A Random Backoff Algorithm for Wireless Sensor Networks}. In \bibinfo{booktitle}{\emph{Next Generation Teletraffic and Wired/Wireless Advanced Networking}}, \bibfield{editor}{\bibinfo{person}{Yevgeni Koucheryavy}, \bibinfo{person}{Jarmo Harju}, {and} \bibinfo{person}{Villy~B. Iversen}} (Eds.). \bibinfo{publisher}{Springer Berlin Heidelberg}, \bibinfo{address}{Berlin, Heidelberg}, \bibinfo{pages}{108--117}.
+\newblock
+\showISBNx{978-3-540-34430-8}
+
+
+\bibitem[Chowdhury et~al\mbox{.}(2018)]%
+        {Shaiful2018}
+\bibfield{author}{\bibinfo{person}{Shaiful~Alam Chowdhury}, \bibinfo{person}{Silvia~Di Nardo}, \bibinfo{person}{Abram Hindle}, {and} \bibinfo{person}{Zhen Ming~(Jack) Jiang}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{An exploratory study on assessing the energy impact of logging on Android applications}.
+\newblock \bibinfo{journal}{\emph{Empirical Software Engineering}} (\bibinfo{date}{10 July} \bibinfo{year}{2018}), \bibinfo{pages}{1422--1456}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1007/s10664-017-9545-x}
+\showDOI{\tempurl}
+
+
+\bibitem[contributors(2023a)]%
+        {reduceSizeExample}
+\bibfield{author}{\bibinfo{person}{Medium contributors}.} \bibinfo{year}{2023}\natexlab{a}.
+\newblock \bibinfo{booktitle}{\emph{GitHub: Reduce Size Example}}.
+\newblock
+\urldef\tempurl%
+\url{{https://medium.com/axiomzenteam/put-your-http-requests-on-a-diet-3e1e52333014}}
+\showURL{%
+Retrieved on August 23 from \tempurl}
+
+
+\bibitem[contributors(2023b)]%
+        {MozillaAPI}
+\bibfield{author}{\bibinfo{person}{MDN contributors}.} \bibinfo{year}{2023}\natexlab{b}.
+\newblock \bibinfo{booktitle}{\emph{Mozilla Page Visibility API}}.
+\newblock
+\urldef\tempurl%
+\url{https://developer.mozilla.org/en-US/docs/Web/API/Page\_Visibility\_API}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
 \bibitem[Cruz and Abreu(2019)]%
         {cruz2019catalog}
-\bibfield{author}{\bibinfo{person}{Luis Cruz} {and} \bibinfo{person}{Rui
-  Abreu}.} \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Catalog of energy patterns for mobile
-  applications}.
-\newblock \bibinfo{journal}{\emph{Empirical Software Engineering}}
-  \bibinfo{volume}{24} (\bibinfo{year}{2019}), \bibinfo{pages}{2209--2235}.
+\bibfield{author}{\bibinfo{person}{Luis Cruz} {and} \bibinfo{person}{Rui Abreu}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Catalog of energy patterns for mobile applications}.
+\newblock \bibinfo{journal}{\emph{Empirical Software Engineering}}  \bibinfo{volume}{24} (\bibinfo{year}{2019}), \bibinfo{pages}{2209--2235}.
 \newblock
+
+
+\bibitem[Daly et~al\mbox{.}(2023)]%
+        {MicrosoftAPI}
+\bibfield{author}{\bibinfo{person}{Jim Daly}, \bibinfo{person}{Peter Hecke}, \bibinfo{person}{Divya Kamath}, {and} \bibinfo{person}{Amol Deore}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Microsoft web API for Batch Processing}}.
+\newblock
+\urldef\tempurl%
+\url{https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/execute-batch-operations-using-web-api}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[Dash and Hu(2021)]%
+        {Dash2021}
+\bibfield{author}{\bibinfo{person}{Pranab Dash} {and} \bibinfo{person}{Y.~Charlie Hu}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{How Much Battery Does Dark Mode Save? An Accurate OLED Display Power Profiler for Modern Smartphones}. In \bibinfo{booktitle}{\emph{Proceedings of the 19th Annual International Conference on Mobile Systems, Applications, and Services}} (Virtual Event, Wisconsin) \emph{(\bibinfo{series}{MobiSys '21})}. \bibinfo{publisher}{Association for Computing Machinery}, \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{323–335}.
+\newblock
+\showISBNx{9781450384438}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3458864.3467682}
+\showDOI{\tempurl}
+
+
+\bibitem[Developers(2022)]%
+        {boohoo-website}
+\bibfield{author}{\bibinfo{person}{BooHoo Developers}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{BooHoo}}.
+\newblock
+\urldef\tempurl%
+\url{https://www.boohoo.com/page/sustainability-guide.html}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[Djirdeh et~al\mbox{.}(2023)]%
+        {lazy-loading-code-example}
+\bibfield{author}{\bibinfo{person}{Houssein Djirdeh}, \bibinfo{person}{Addy Osmani}, \bibinfo{person}{Mathias Bynens}, {and} \bibinfo{person}{Pollard Barry}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Web.dev}}.
+\newblock
+\urldef\tempurl%
+\url{{https://web.dev/browser-level-image-lazy-loading/}}
+\showURL{%
+Retrieved on August 23 from \tempurl}
+
+
+\bibitem[Dong et~al\mbox{.}(2009)]%
+        {Dong2009}
+\bibfield{author}{\bibinfo{person}{Mian Dong}, \bibinfo{person}{Yung-Seok~Kevin Choi}, {and} \bibinfo{person}{Lin Zhong}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Power-Saving Color Transformation of Mobile Graphical User Interfaces on OLED-Based Displays}. In \bibinfo{booktitle}{\emph{Proceedings of the 2009 ACM/IEEE International Symposium on Low Power Electronics and Design}} (San Fancisco, CA, USA) \emph{(\bibinfo{series}{ISLPED '09})}. \bibinfo{publisher}{Association for Computing Machinery}, \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{339–342}.
+\newblock
+\showISBNx{9781605586847}
+\urldef\tempurl%
+\url{https://doi.org/10.1145/1594233.1594317}
+\showDOI{\tempurl}
+
+
+\bibitem[eventhelix(2020)]%
+        {design_pattern_resource_manager}
+\bibfield{author}{\bibinfo{person}{eventhelix}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Resource Manager Design Pattern}}.
+\newblock
+\urldef\tempurl%
+\url{{https://www.eventhelix.com/design-patterns/resource-manager/}}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[Harrelson(2023)]%
+        {github_battery_saving_demo}
+\bibfield{author}{\bibinfo{person}{Chris Harrelson}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{batter-savings}}.
+\newblock
+\urldef\tempurl%
+\url{https://github.com/chrishtr/battery-savings/blob/master/explainer.md}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[Inc.(2022)]%
+        {VoiceOver-Apple}
+\bibfield{author}{\bibinfo{person}{Apple Inc.}} \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Accessibility - Vision}}.
+\newblock
+\urldef\tempurl%
+\url{https://www.apple.com/accessibility/vision/}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Accessed: Oct 2023}.
+
+
+\bibitem[Kaur and Kumar(2016)]%
+        {Kaur2016}
+\bibfield{author}{\bibinfo{person}{Tarunpreet Kaur} {and} \bibinfo{person}{Dilip Kumar}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{TDMA-based MAC protocols for wireless sensor networks: A survey and comparative analysis}. In \bibinfo{booktitle}{\emph{2016 5th International Conference on Wireless Networks and Embedded Systems (WECON)}}. \bibinfo{pages}{1--6}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/WECON.2016.7993426}
+\showDOI{\tempurl}
+
+
+\bibitem[Kollmann and Beresford(2017)]%
+        {Kollmann2017}
+\bibfield{author}{\bibinfo{person}{Stephan~A. Kollmann} {and} \bibinfo{person}{Alastair~R. Beresford}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{The Cost of Push Notifications for Smartphones Using Tor Hidden Services}. In \bibinfo{booktitle}{\emph{2017 IEEE European Symposium on Security and Privacy Workshops (EuroSPW)}}. \bibinfo{pages}{76--85}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/EuroSPW.2017.55}
+\showDOI{\tempurl}
+
+
+\bibitem[Loo(2023)]%
+        {Angular_Http_Client}
+\bibfield{author}{\bibinfo{person}{Josephine Loo}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{HTTP Request in Javascript}}.
+\newblock
+\urldef\tempurl%
+\url{https://www.bannerbear.com/blog/5-ways-to-make-an-http-request-in-javascript/}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
 
 
 \bibitem[Mantiuk et~al\mbox{.}(2009)]%
         {Mantiuk2009}
-\bibfield{author}{\bibinfo{person}{Rafa\l{} Mantiuk}, \bibinfo{person}{Allan~G.
-  Rempel}, {and} \bibinfo{person}{Wolfgang Heidrich}.}
-  \bibinfo{year}{2009}\natexlab{}.
-\newblock \showarticletitle{Display Considerations for Night and
-  Low-Illumination Viewing}. In \bibinfo{booktitle}{\emph{Proceedings of the
-  6th Symposium on Applied Perception in Graphics and Visualization}} (Chania,
-  Crete, Greece) \emph{(\bibinfo{series}{APGV '09})}.
-  \bibinfo{publisher}{Association for Computing Machinery},
-  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{53–58}.
+\bibfield{author}{\bibinfo{person}{Rafa\l{} Mantiuk}, \bibinfo{person}{Allan~G. Rempel}, {and} \bibinfo{person}{Wolfgang Heidrich}.} \bibinfo{year}{2009}\natexlab{}.
+\newblock \showarticletitle{Display Considerations for Night and Low-Illumination Viewing}. In \bibinfo{booktitle}{\emph{Proceedings of the 6th Symposium on Applied Perception in Graphics and Visualization}} (Chania, Crete, Greece) \emph{(\bibinfo{series}{APGV '09})}. \bibinfo{publisher}{Association for Computing Machinery}, \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{53–58}.
 \newblock
 \showISBNx{9781605587431}
 \urldef\tempurl%
@@ -469,17 +564,69 @@
 \showDOI{\tempurl}
 
 
+\bibitem[Monschke(2019)]%
+        {Garbagecollect}
+\bibfield{author}{\bibinfo{person}{Jan Monschke}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Garbage collection in source code}}.
+\newblock
+\urldef\tempurl%
+\url{https://developers.soundcloud.com/blog/garbage-collection-in-redux-applications}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[Nielsen(1995)]%
+        {nielsen1995ten}
+\bibfield{author}{\bibinfo{person}{Jakob Nielsen}.} \bibinfo{year}{1995}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Ten Usability Heuristics}}.
+\newblock
+\urldef\tempurl%
+\url{https://www.nngroup.com/articles/ten-usability-heuristics/}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Accessed: Oct 2023}.
+
+
+\bibitem[Pan et~al\mbox{.}(2022)]%
+        {Pan2022}
+\bibfield{author}{\bibinfo{person}{Zulie Pan}, \bibinfo{person}{Yu Chen}, \bibinfo{person}{Yuanchao Chen}, \bibinfo{person}{Yi Shen}, {and} \bibinfo{person}{Yang Li}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{LogInjector: Detecting Web Application Log Injection Vulnerabilities}.
+\newblock \bibinfo{journal}{\emph{Applied Sciences}} \bibinfo{volume}{12}, \bibinfo{number}{15} (\bibinfo{year}{2022}).
+\newblock
+\showISSN{2076-3417}
+\urldef\tempurl%
+\url{https://doi.org/10.3390/app12157681}
+\showDOI{\tempurl}
+
+
+\bibitem[Patange(2020)]%
+        {chrome_battery_saving_mode}
+\bibfield{author}{\bibinfo{person}{Tanmay Patange}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Google Chrome’s Battery-Savings}}.
+\newblock
+\urldef\tempurl%
+\url{https://news.thewindowsclub.com/chrome-will-allow-websites-to-switch-to-battery-saving-mode-102329/}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
+\bibitem[Peczek(2019)]%
+        {CacheExample}
+\bibfield{author}{\bibinfo{person}{Tomasz Peczek}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Demo.AspNetCore.PushNotifications}}.
+\newblock
+\urldef\tempurl%
+\url{https://github.com/tpeczek/Demo.AspNetCore.PushNotifications/blob/main/Demo.AspNetCore.PushNotifications.Services.PushService/PushServicePushNotificationService.cs}
+\showURL{%
+Retrieved On Oct 2023 from \tempurl}
+
+
 \bibitem[Pernabas et~al\mbox{.}(2019)]%
         {Pernabas2019}
-\bibfield{author}{\bibinfo{person}{Julian~Benadit Pernabas},
-  \bibinfo{person}{Sagayraj~Francis Fidele}, {and}
-  \bibinfo{person}{Krishna~Kumar Vaithinathan}.}
-  \bibinfo{year}{2019}\natexlab{}.
-\newblock \showarticletitle{Enhancing Greedy Web Proxy caching using Weighted
-  Random Indexing based Data Mining Classifier}.
-\newblock \bibinfo{journal}{\emph{Egyptian Informatics Journal}}
-  \bibinfo{volume}{20}, \bibinfo{number}{2} (\bibinfo{year}{2019}),
-  \bibinfo{pages}{117--130}.
+\bibfield{author}{\bibinfo{person}{Julian~Benadit Pernabas}, \bibinfo{person}{Sagayraj~Francis Fidele}, {and} \bibinfo{person}{Krishna~Kumar Vaithinathan}.} \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Enhancing Greedy Web Proxy caching using Weighted Random Indexing based Data Mining Classifier}.
+\newblock \bibinfo{journal}{\emph{Egyptian Informatics Journal}} \bibinfo{volume}{20}, \bibinfo{number}{2} (\bibinfo{year}{2019}), \bibinfo{pages}{117--130}.
 \newblock
 \showISSN{1110-8665}
 \urldef\tempurl%
@@ -487,27 +634,55 @@
 \showDOI{\tempurl}
 
 
+\bibitem[Popovici et~al\mbox{.}(2023)]%
+        {github-retry-demo}
+\bibfield{author}{\bibinfo{person}{Cristian Popovici}, \bibinfo{person}{Scala Steward}, {and} \bibinfo{person}{Jason Webb}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Scala Retry}}.
+\newblock
+\urldef\tempurl%
+\url{https://github.com/hipjim/scala-retry}
+\showURL{%
+Retrieved on Oct 2023 from \tempurl}
+
+
 \bibitem[Rempel et~al\mbox{.}(2012)]%
         {Rempel2012}
-\bibfield{author}{\bibinfo{person}{Allan Rempel}, \bibinfo{person}{Rafal
-  Mantiuk}, {and} \bibinfo{person}{Wolfgang Heidrich}.}
-  \bibinfo{year}{2012}\natexlab{}.
-\newblock \showarticletitle{Display Considerations for Improved Night Vision
-  Performance}.
-\newblock \bibinfo{journal}{\emph{Final Program and Proceedings - IS and T/SID
-  Color Imaging Conference}} (\bibinfo{date}{05} \bibinfo{year}{2012}).
+\bibfield{author}{\bibinfo{person}{Allan Rempel}, \bibinfo{person}{Rafal Mantiuk}, {and} \bibinfo{person}{Wolfgang Heidrich}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{Display Considerations for Improved Night Vision Performance}.
+\newblock \bibinfo{journal}{\emph{Final Program and Proceedings - IS and T/SID Color Imaging Conference}} (\bibinfo{date}{05} \bibinfo{year}{2012}).
 \newblock
+
+
+\bibitem[Scientific(2022)]%
+        {JAWS}
+\bibfield{author}{\bibinfo{person}{Freedom Scientific}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{JAWS Screen Reading Software}}.
+\newblock
+\urldef\tempurl%
+\url{https://www.freedomscientific.com/Products/software/JAWS/}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Accessed: Oct 2023}.
+
+
+\bibitem[Team(2023)]%
+        {rest-api-batch-example}
+\bibfield{author}{\bibinfo{person}{Shopware~Developer Team}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{REST API Guide: Batch Mode Examples}}.
+\newblock
+\urldef\tempurl%
+\url{https://developers.shopware.com/developers-guide/rest-api/examples/batch/}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Accessed: Oct 2023}.
 
 
 \bibitem[Tuaycharoen et~al\mbox{.}(2018)]%
         {Tuaycharoen2018}
-\bibfield{author}{\bibinfo{person}{Nuengwong Tuaycharoen},
-  \bibinfo{person}{Veerawat Prodpran}, {and} \bibinfo{person}{Boonsong
-  Srithong}.} \bibinfo{year}{2018}\natexlab{}.
-\newblock \showarticletitle{ClassSchedule: A web-based application for school
-  class scheduling with real-time lazy loading}. In
-  \bibinfo{booktitle}{\emph{2018 5th International Conference on Business and
-  Industrial Research (ICBIR)}}. \bibinfo{pages}{210--214}.
+\bibfield{author}{\bibinfo{person}{Nuengwong Tuaycharoen}, \bibinfo{person}{Veerawat Prodpran}, {and} \bibinfo{person}{Boonsong Srithong}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{ClassSchedule: A web-based application for school class scheduling with real-time lazy loading}. In \bibinfo{booktitle}{\emph{2018 5th International Conference on Business and Industrial Research (ICBIR)}}. \bibinfo{pages}{210--214}.
 \newblock
 \urldef\tempurl%
 \url{https://doi.org/10.1109/ICBIR.2018.8391194}
