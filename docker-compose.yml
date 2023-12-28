@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./RQ3/WEB  # Adjust the path to where your Dockerfile is
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.2  # Use the version of MySQL you prefer
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: energy_patterns
+      MYSQL_USER: username
+      MYSQL_PASSWORD: pa55w0rd
+    volumes:
+      - db_data:/var/lib/mysql
+
+  python-service:
+    build: 
+      context: ./RQ3/MAIN_WORKFLOW
+      dockerfile: Dockerfile-python  # Name of your Dockerfile
+    command: ["python3", "run_testcases.py", "3", "lazyLoading", "-nowait"]
+    depends_on:
+      - db
+      - web  # If your Python component depends on the database and web service
+
+  selenium-chrome:
+    image: selenium/standalone-chrome
+    platform: linux/amd64
+    ports:
+      - "4444:4444"
+
+  java-selenium-runner:
+    build: 
+      context: ./RQ3/MAIN_WORKFLOW/selenium_runner_java
+      dockerfile: Dockerfile-selenium-runner  # Name of your Dockerfile
+    command: ["java", "-cp", "target/classes:target/dependency/*", "org.ese.Main", "lazyLoading", "3"]
+    depends_on:
+      - db
+      - web  # If your Java component depends on the database and web service
+
+
+volumes:
+  db_data:

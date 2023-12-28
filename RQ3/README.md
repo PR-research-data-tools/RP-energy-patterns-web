@@ -66,12 +66,16 @@ Example:
 
 All other files are for running all test cases and plotting the measurement data:
 
-- **run_testcases.py** => Main script
+- **run_testcases.py** => Main script. You can run it using the command 
+`python3 run_testcases.py 3 lazyLoading`
 - TestAPI.py => Helper for main script. Do not run this directly.
 - manifest.json => Defines the patterns and test cases
 - power-logfiles => Folder where the measurement data csv files are saved to. Do not rename!
 
 After-running tasks
-- **combine_testdata.py** => Use this to merge all test run data into one single file
-- **show_plots.py** => Shows plots of the measurement data
+- **combine_testdata.py** => Use this to merge all test run data into one single file.
+You can run it using the command: 
+`python3 combine_testdata.py`
+- **show_plots.py** => Shows plots of the measurement data. You can run it using the example command: 
+`python3 show_plots.py 0 "Total Elapsed Time (sec)" " sec"`
 - PLOT_COMMANDS.txt => Here you can find all commands you need to run the former script (show_plots.py)

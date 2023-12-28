@@ -1,0 +1,13 @@
+bleach==3.3.0
+bpemb==0.3.3
+docker-pycreds==0.4.0
+entrypoints==0.3
+pandas==1.4.2
+pandocfilters==1.4.3
+plotly==4.14.3
+psutil==5.9.2
+requests==2.25.1
+charset-normalizer==3.3.0
+certifi==2023.7.22
+responses==0.18.0
+zipp==3.6.0

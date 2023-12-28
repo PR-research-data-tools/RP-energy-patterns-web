@@ -1,0 +1,26 @@
+# Use an OpenJDK 19 base image
+FROM openjdk:19-jdk
+
+# Java Docker image based on Ubuntu with apt-get
+#FROM openjdk:11-jdk-buster
+
+# Install Maven
+ARG MAVEN_VERSION=3.9.0
+RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
+  && curl -fsSL https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+    | tar -xzC /usr/share/maven --strip-components=1 \
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+
+ENV MAVEN_HOME /usr/share/maven
+
+# Set the working directory in the Docker image
+WORKDIR /app
+
+# Copy the project files into the Docker image
+COPY . /app
+
+# Build the project using Maven
+RUN mvn clean package
+
+# Command to run the application
+CMD ["java", "-cp", "target/classes:target/dependency/*"]
